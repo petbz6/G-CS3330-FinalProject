@@ -1,25 +1,55 @@
 package game;
 
-//Define a base Character class with classic dnd stats that can be extended later
-public class Character {
-	protected String name;
-	protected int strength;
-	protected int dexterity;
-	protected int constitution;
-	protected int intelligence;
-	protected int wisdom;
-	protected int charisma;
- 
+import java.util.Arrays;
+import java.util.Random;
 
-	public Character(String name, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma) {
-		this.name = name;
-		this.strength = strength;
-		this.dexterity = dexterity;
-		this.constitution = constitution;
-		this.intelligence = intelligence;
-		this.wisdom = wisdom;
-		this.charisma = charisma;
-	}
+//Create character class with classic DnD stat attributes
+public class Character {
+    protected String name;
+    protected String characterClass;
+    protected int strength;
+    protected int dexterity;
+    protected int constitution;
+    protected int intelligence;
+    protected int wisdom;
+    protected int charisma;
+
+    //Create character instance
+    public Character(String name) {
+        this.name = name;
+        rollStats();
+    }
+
+    //Create method to roll for stats in a classic DnD fashion (roll a six sided die 4 times and drop the lowest roll)
+    private void rollStats() {
+        Random random = new Random();
+        int[] rolls = new int[6]; //Array to store the total rolls
+
+        //Generate a roll for each stat
+        for (int i = 0; i < 6; i++) {
+            int[] statRolls = new int[4]; //Array to store the 4 dice rolls
+            //Roll 4 times for each stat
+            for (int j = 0; j < 4; j++) {
+                statRolls[j] = random.nextInt(6) + 1; //Simulate rolling a 6-sided die
+            }
+            //Sort the stat rolls in ascending order
+            Arrays.sort(statRolls);
+            //Sum the highest 3 rolls (drop the lowest)
+            int total = 0;
+            for (int j = 1; j < 4; j++) {
+                total += statRolls[j];
+            }
+            rolls[i] = total; //Store the total roll for the stat
+        }
+
+        //Assign each roll to the corresponding stat
+        strength = rolls[0];
+        dexterity = rolls[1];
+        constitution = rolls[2];
+        intelligence = rolls[3];
+        wisdom = rolls[4];
+        charisma = rolls[5];
+    }
 
 	//Getter methods for stats
 	public int getStrength() {
@@ -44,24 +74,5 @@ public class Character {
  
 	public int getCharisma() {
 		return charisma;
-	}
-}
-
-//Define subclasses for character class that represent actual playable classes in dnd
-class Fighter extends Character {
-	public Fighter(String name) {
-		super(name, 16, 9, 15, 13, 11, 14); //Stat values for a fighter
-	}
-}
-
-class Wizard extends Character {
-	public Wizard(String name) {
-		super(name, 9, 11, 13, 17, 16, 15); //Stat values for a wizard
-	}
-}
-
-class Rogue extends Character {
-	public Rogue(String name) {
-		super(name, 10, 17, 14, 14, 12, 16); //Stat values for a rogue
 	}
 }
