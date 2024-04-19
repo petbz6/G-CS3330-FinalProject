@@ -24,12 +24,15 @@ public class CharacterSelector {
         //Call createCharacter and create a new player character
         Character playerCharacter = createCharacter(scanner, choice);
         
-        //Close the scanner
-        scanner.close();
-
         //Call displayCharacterInfo to display all the character info
         displayCharacterInfo(playerCharacter);
         
+        // Once the character is created, the quest menu will be displayed
+        QuestMenu.displayQuests(scanner);
+        
+        //Close the scanner
+        scanner.close();
+
         //Venture forth
         //xxxxx
     }
