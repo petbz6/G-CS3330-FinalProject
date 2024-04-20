@@ -27,23 +27,64 @@ public class QuestMenu {
             System.out.println((i + 1) + ". " + quest.getName());
         }
 
-        int choice;
+        int questChoice;
         // Prompt for player to choose a quest
         do {
-            System.out.print("Enter the number of the quest you would like to choose: ");
+            System.out.print("\nEnter the number of the quest you would like to choose: ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next();
             }
-            choice = scanner.nextInt();
+            questChoice = scanner.nextInt();
             scanner.nextLine(); 
-            if (choice < 1 || choice > quests.size()) {
-                System.out.println("Invalid choice. Please enter a number between 1 and " + quests.size() + ".");
+            if (questChoice < 1 || questChoice > quests.size()) {
+                System.out.println("Invalid questChoice. Please enter a number between 1 and " + quests.size() + ".");
             }
-        } while (choice < 1 || choice > quests.size());
+        } while (questChoice < 1 || questChoice > quests.size());
         
         // Gets the quest selected by the player
-        Quest selectedQuest = quests.get(choice - 1);
+        Quest selectedQuest = quests.get(questChoice - 1);
         
+        //PLACEHOLDER: Combat occurs after player selects a quest
+        System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+        
+        // Call the method for player to choose quest reward
+        questRewardChoice(scanner, selectedQuest);
+    }
+    
+    // After combat (if player successfully wins combat), they will have completed the quest
+    // The player will be prompted to select from the available rewards
+    public static void questRewardChoice(Scanner scanner, Quest selectedQuest) {
+        System.out.println("Quest Completed!");
+        System.out.println("The following rewards are available:");
+        List<String> rewards = selectedQuest.getRewards();
+        
+        // Displays available rewards, assigning a number to each
+        for(int i = 0; i < rewards.size(); i++) {
+            System.out.println((i + 1) + ". " + rewards.get(i));
+        }
+        
+        int rewardChoice;
+        // Prompt for player to choose reward
+        do {
+            System.out.print("Choose your reward: ");
+            while (!scanner.hasNextInt()) {
+                // Handle non-numeric input
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
+            // Gets the reward choice
+            rewardChoice = scanner.nextInt();
+            scanner.nextLine();
+            
+            // Handles if numeric input falls outside the number of choices 
+            if (rewardChoice < 1 || rewardChoice > rewards.size()) {
+                System.out.println("Invalid input. Please enter a number between 1 and " + rewards.size() + ".");
+            }
+            	
+        } while (rewardChoice < 1 || rewardChoice > rewards.size());
+        
+        String selectedReward = rewards.get(rewardChoice - 1);
+        System.out.println("You have chosen: " + selectedReward);
     }
 }

@@ -15,6 +15,10 @@ public class Quest {
     public String getName() {
         return questName;
     }
+    
+    public List<String> getRewards() {
+        return equipmentReward;
+    }
 
     
     
