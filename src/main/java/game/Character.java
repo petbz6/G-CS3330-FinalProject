@@ -13,11 +13,17 @@ public class Character {
     protected int intelligence;
     protected int wisdom;
     protected int charisma;
+    // Attributes for character leveling/experience 
+    protected int level;
+    protected int experience;
 
     //Create character instance
     public Character(String name) {
         this.name = name;
         rollStats();
+        
+        this.level = 1;
+        this.experience = 0;
     }
 
     //Create method to roll for stats in a classic DnD fashion (roll a six sided die 4 times and drop the lowest roll)
@@ -75,4 +81,34 @@ public class Character {
 	public int getCharisma() {
 		return charisma;
 	}
+	
+	public int getLevel() {
+        return level;
+    }
+	
+	public int getExperience() {
+		return experience;
+	}
+	
+	// Increases character experience and checks for level up condition
+	public void gainXP(int xpReward) {
+		experience += xpReward;
+	    if (experience >= getXPRequired()) {
+	    	levelUp();
+	    	}
+	}
+	// Handles occurrence when the character levels up
+    private void levelUp() {
+        level++;
+        experience -= getXPRequired();
+        System.out.println("You leveled up to level " + level + "!");
+    }
+    
+    // Calculates the experience points required for the next level
+    private int getXPRequired() {
+        return level * 50; 
+    }
+
+    
+		
 }
