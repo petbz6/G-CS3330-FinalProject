@@ -28,7 +28,7 @@ public class CharacterSelector {
         displayCharacterInfo(playerCharacter);
         
         // Once the character is created, the quest menu will be displayed
-        QuestMenu.displayQuests(scanner);
+        QuestMenu.displayQuests(scanner, playerCharacter);
         
         //Close the scanner
         scanner.close();

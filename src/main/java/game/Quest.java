@@ -7,14 +7,13 @@ public class Quest {
     protected String questName;
     protected List<String> equipmentReward;
     protected int xpReward;
-
-    
+    protected boolean completed;
 
     public Quest(String questName, List<String> equipmentReward, int xpReward) {
         this.questName = questName;
         this.equipmentReward = equipmentReward;
         this.xpReward = xpReward;
-
+        this.completed = false;
     }
 
     public List<String> getRewards() {
@@ -45,6 +44,16 @@ public class Quest {
 		this.xpReward = xpReward;
 	}
 	
+	// Used for quest status (Checking whether or not a quest is completed)
+	public boolean isCompleted() {
+        return completed;
+    }
 	
+	// Used to mark a quest as completed 
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+	
+    
        
 }

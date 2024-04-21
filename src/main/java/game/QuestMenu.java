@@ -6,8 +6,11 @@ import java.util.Scanner;
 
 public class QuestMenu {
 
+	// Stores the quest list as a class variable
+    private static List<Quest> quests = questLog();
+
     // List of available quests, each with their own rewards and experience points
-    public static List<Quest> createQuests() {
+    private static List<Quest> questLog() {
         List<Quest> quests = new ArrayList<>();
         quests.add(new Quest("Defeat the bandits", List.of("Short Sword", "Battle Axe", "Warhammer"), 50));
         quests.add(new Quest("Defend the village", List.of("Broad Shield", "Helm of Justice", "Gloves of Salvation"), 60));
@@ -17,49 +20,67 @@ public class QuestMenu {
 
         return quests;
     }
-
-    // Method that displays the quests and handles quest selection by player
-    public static void displayQuests(Scanner scanner, Character playerCharacter) {
-        List<Quest> quests = createQuests();
+    
+    public static void displayQuests(Scanner scanner, Character character) {
+        // Get the list of quests from the class variable
+        List<Quest> quests = QuestMenu.quests;
 
         System.out.println("\nAvailable Quests:");
         for (int i = 0; i < quests.size(); i++) {
             Quest quest = quests.get(i);
             System.out.println((i + 1) + ". " + quest.getQuestName());
         }
+        
+        // Option 6: View Quest Status
+        System.out.println("6. View Quest Status");
 
         int questChoice;
-        // Prompt for player to choose a quest
         do {
-            System.out.print("\nEnter the number of the quest you would like to choose: ");
+            System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest status): ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next();
             }
             questChoice = scanner.nextInt();
             scanner.nextLine(); 
-            if (questChoice < 1 || questChoice > quests.size()) {
-                System.out.println("Invalid questChoice. Please enter a number between 1 and " + quests.size() + ".");
+            if (questChoice < 0 || questChoice > quests.size() + 1) {
+                System.out.println("Invalid quest choice. Please enter a number between 0 and " + (quests.size() + 1) + ".");
             }
-        } while (questChoice < 1 || questChoice > quests.size());
-        
-        // Gets the quest selected by the player
-        Quest selectedQuest = quests.get(questChoice - 1);
-        
-        // Placeholder: Combat occurs after player selects a quest
-        System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
-        
-        // Call the method for player to choose quest reward
-        questCompletedMenu(scanner, selectedQuest, playerCharacter);
+        } while (questChoice < 0 || questChoice > quests.size() + 1);
+
+        if (questChoice == 6) {
+            viewQuestStatus(scanner, character);
+        } else {
+            Quest selectedQuest = quests.get(questChoice - 1);
+            
+            System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+            
+            questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        }
     }
 
- 
+    // Menu option that displays whether or not a quest has been completed
+    public static void viewQuestStatus(Scanner scanner, Character character) {
+        List<Quest> quests = QuestMenu.quests;
+
+        System.out.println("\nQuest Status:");
+        for (Quest quest : quests) {
+            System.out.println(quest.getQuestName() + " - " + (quest.isCompleted() ? "Completed" : "Incomplete"));
+        }
+        // After displaying quest status, go back to the quest menu
+        displayQuests(scanner, character);
+    }
+
     // After combat (if player successfully wins combat), they will have completed the quest
     // The player will be prompted to select from the available rewards
-    public static void questCompletedMenu(Scanner scanner, Quest selectedQuest, Character playerCharacter) {
+    public static void questCompletedMenu(Scanner scanner, Quest selectedQuest, Character character, int questChoice) {
         System.out.println("Quest Completed!");
 
-        handleXpReward(selectedQuest, playerCharacter);
+        // Marks current quest as completed
+        Quest currentQuest = quests.get(questChoice - 1);
+        currentQuest.setCompleted(true); 
+
+        handleXpReward(currentQuest, character);
 
         System.out.println("\nThe following rewards are available:");
         List<String> rewards = selectedQuest.getRewards();
@@ -95,12 +116,12 @@ public class QuestMenu {
         }
         
         // After completing the quest, go back to the quest menu
-        displayQuests(scanner, playerCharacter);
+        displayQuests(scanner, character);
     }
     
     // Handles the equipment reward choice by the player
     public static void handleEquipmentReward(Scanner scanner, Quest selectedQuest, int rewardChoice) {
-    	// Gets the available rewards associated with the quest
+        // Gets the available rewards associated with the quest
         List<String> rewards = selectedQuest.getRewards();
         // Gets the reward chosen by the player
         String selectedReward = rewards.get(rewardChoice - 1);
@@ -108,14 +129,13 @@ public class QuestMenu {
     }
 
     // Handles the XP reward for the player and quest
-    public static void handleXpReward(Quest selectedQuest, Character playerCharacter) {
-    	// Gets experience reward associated with the quest
+    public static void handleXpReward(Quest selectedQuest, Character character) {
+        // Gets experience reward associated with the quest
         int xpReward = selectedQuest.getXpReward(); 
         // Displays how much experience gained
         System.out.println("You gained " + xpReward + " experience points.");
         // Adds the experience points to the character level
-        playerCharacter.gainXP(xpReward); 
-        System.out.println("Current Level: " + playerCharacter.getLevel());
+        character.gainXP(xpReward); 
+        System.out.println("Current Level: " + character.getLevel());
     }
-
 }
