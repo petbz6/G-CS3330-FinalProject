@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class QuestMenu {
 
-	// Stores the quest list as a class variable
+    // Stores the quest list as a class variable
     private static List<Quest> quests = questLog();
 
     // List of available quests, each with their own rewards and experience points
@@ -28,7 +28,13 @@ public class QuestMenu {
         System.out.println("\nAvailable Quests:");
         for (int i = 0; i < quests.size(); i++) {
             Quest quest = quests.get(i);
-            System.out.println((i + 1) + ". " + quest.getQuestName());
+            // Quest Progression
+            // Player must complete quests in order. If the previous quest is not completed, the next one is set to locked
+            if (quest.isCompleted() || i == 0 || quests.get(i - 1).isCompleted()) {
+                System.out.println((i + 1) + ". " + quest.getQuestName());
+            } else {
+                System.out.println((i + 1) + ". " + quest.getQuestName() + " 🔒");
+            }
         }
         
         // Option 6: View Quest Status
@@ -52,10 +58,13 @@ public class QuestMenu {
             viewQuestStatus(scanner, character);
         } else {
             Quest selectedQuest = quests.get(questChoice - 1);
-            
-            System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
-            
-            questCompletedMenu(scanner, selectedQuest, character, questChoice);
+            if (selectedQuest.isCompleted() || questChoice == 1 || quests.get(questChoice - 2).isCompleted()) {
+                System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+                questCompletedMenu(scanner, selectedQuest, character, questChoice);
+            } else {
+                System.out.println("You must complete the previous quest to unlock this quest.");
+                displayQuests(scanner, character);
+            }
         }
     }
 
@@ -65,7 +74,7 @@ public class QuestMenu {
 
         System.out.println("\nQuest Status:");
         for (Quest quest : quests) {
-            System.out.println(quest.getQuestName() + " - " + (quest.isCompleted() ? "Completed" : "Incomplete"));
+        	System.out.println(quest.getQuestName() + " - " + (quest.isCompleted() ? "Completed (" + quest.getCompletionCount() + " times)" : "Incomplete"));
         }
         // After displaying quest status, go back to the quest menu
         displayQuests(scanner, character);
@@ -78,8 +87,9 @@ public class QuestMenu {
 
         // Marks current quest as completed
         Quest currentQuest = quests.get(questChoice - 1);
-        currentQuest.setCompleted(true); 
-
+        currentQuest.setCompleted(true);
+        // Add to the completion count 
+        currentQuest.CompletionCount();
         handleXpReward(currentQuest, character);
 
         System.out.println("\nThe following rewards are available:");
