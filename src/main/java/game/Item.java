@@ -2,16 +2,23 @@ package game;
 
 public class Item {
 	
+    private enum Rarity {
+        COMMON, UNCOMMON, RARE, EPIC, LEGENDARY
+    }
 	private String name;
 	private String type;
-	private String rarity;
 	private int maxHealth;
 	private int health;
+	private Rarity rarity;
 	
 
-	public static void main(String[] args) {
-		
-	}
+    public Item(String name, String type, Rarity rarity, int maxHealth) {
+        this.name = name;
+        this.type = type;
+        this.rarity = rarity;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth; // Assuming new items start at max health
+    }
 	
 	@Override
 	public String toString() {
@@ -22,7 +29,7 @@ public class Item {
 	            ", health=" + health +
 	            '}';
 	}
-	 // Getter and setter for name
+
     public String getName() {
         return name;
     }
@@ -39,7 +46,7 @@ public class Item {
     	this.maxHealth = maxHealth;
     }
     
-    // Getter and setter for type
+
     public String getType() {
         return type;
     }
@@ -48,7 +55,6 @@ public class Item {
         this.type = type;
     }
 
-    // Getter and setter for rarity
     public String getRarity() {
         return rarity;
     }
@@ -57,7 +63,7 @@ public class Item {
         this.rarity = rarity;
     }
 
-    // Getter for health - setter not provided since health should probably only be modified through specific methods like repair
+   
     public int getHealth() {
         return health;
     }

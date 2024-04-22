@@ -1,7 +1,9 @@
 package game;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 //Create character class with classic DnD stat attributes
 public class Character {
@@ -16,6 +18,10 @@ public class Character {
     // Attributes for character leveling/experience 
     protected int level;
     protected int experience;
+    protected int gems;
+    
+    private List<Item> inventory;
+
 
     //Create character instance
     public Character(String name) {
@@ -108,6 +114,68 @@ public class Character {
     private int getXPRequired() {
         return level * 50; 
     }
+
+    public boolean addItem(Item item) {
+    	if (this.inventory.size() >= 6) {
+    		//if inventory is full
+    		System.out.println("Could not add item to inventory");
+    		return false;
+    	}
+    	this.inventory.add(item);
+    	return true;
+ 
+    }
+    public boolean removeItem(Item item) {
+    	if (this.inventory.contains(item)) {
+    		//remove the item from their inventory
+    		this.inventory.remove(item);
+    		return true;
+    	}
+    	else {
+    		System.out.println("Item was not found in inventory");
+    		return false;
+    		
+    	}
+    }
+    public void printInventory() {
+        if (this.inventory.isEmpty()) {
+            System.out.println("Your inventory is empty.");
+        } else {
+            System.out.println("Inventory items:");
+            for (Item item : this.inventory) {
+                System.out.println(item.toString());
+            }
+        }
+    }
+	public void repairItem(Item item) {
+		if (item.getHealth() < item.getmaxHealth()) {
+			item.setHealth(item.getmaxHealth());
+		}
+		else {
+			System.out.println("Item is currently at its max health");
+		}
+	}
+	public void upgradeItemHealth(Item item) {
+	    Scanner scanner = new Scanner(System.in);
+	    System.out.println("Would you like to pay 50 gems to upgrade your item's health by 50? (yes/no)");
+
+	    String input = scanner.nextLine().trim().toLowerCase();
+
+	    if ("yes".equals(input)) {
+	        if (this.gems >= 50) { // if character has 50 or more gems
+	            item.setmaxHealth(item.getmaxHealth() + 50); // add 50 to items max health
+	            this.gems -= 50; // Deduct the gems.
+	            item.setHealth(item.getmaxHealth()); 
+	            System.out.println("Item health has been upgraded to " + item.getmaxHealth());
+	        } else {
+	            System.out.println("You do not have enough gems to upgrade the item.");
+	        }
+	    } else {
+	        System.out.println("Upgrade cancelled.");
+	    }
+	    scanner.close(); 
+	}
+
 
     
 		
