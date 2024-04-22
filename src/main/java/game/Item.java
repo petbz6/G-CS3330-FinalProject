@@ -55,11 +55,11 @@ public class Item {
         this.type = type;
     }
 
-    public String getRarity() {
+    public Rarity getRarity() {
         return rarity;
     }
 
-    public void setRarity(String rarity) {
+    public void setRarity(Rarity rarity) {
         this.rarity = rarity;
     }
 
