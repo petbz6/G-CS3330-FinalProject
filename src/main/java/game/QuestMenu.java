@@ -39,23 +39,27 @@ public class QuestMenu {
         
         // Option 6: View Quest Status
         System.out.println("6. View Quest Status");
+        // Option 7: Back to Character Menu
+        System.out.println("7. Back to Character Menu");
 
         int questChoice;
         do {
-            System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest status): ");
+            System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest status, or 7 to return to the character menu): ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next();
             }
             questChoice = scanner.nextInt();
             scanner.nextLine(); 
-            if (questChoice < 0 || questChoice > quests.size() + 1) {
-                System.out.println("Invalid quest choice. Please enter a number between 0 and " + (quests.size() + 1) + ".");
+            if (questChoice < 1 || questChoice > quests.size() + 2) {
+                System.out.println("Invalid quest choice. Please enter a number between 1 and " + (quests.size() + 2) + ".");
             }
-        } while (questChoice < 0 || questChoice > quests.size() + 1);
+        } while (questChoice < 1 || questChoice > quests.size() + 2);
 
         if (questChoice == 6) {
             viewQuestStatus(scanner, character);
+        } else if (questChoice == 7) {
+            CharacterMenu.displayCharacterMenu(scanner, character);
         } else {
             Quest selectedQuest = quests.get(questChoice - 1);
             if (selectedQuest.isCompleted() || questChoice == 1 || quests.get(questChoice - 2).isCompleted()) {

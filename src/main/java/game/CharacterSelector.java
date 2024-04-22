@@ -24,11 +24,9 @@ public class CharacterSelector {
         //Call createCharacter and create a new player character
         Character playerCharacter = createCharacter(scanner, choice);
         
-        //Call displayCharacterInfo to display all the character info
-        displayCharacterInfo(playerCharacter);
-        
-        // Once the character is created, the quest menu will be displayed
-        QuestMenu.displayQuests(scanner, playerCharacter);
+        // Once the character is created, the character menu will be displayed
+        CharacterMenu.displayCharacterMenu(scanner, playerCharacter);
+
         
         //Close the scanner
         scanner.close();
@@ -95,10 +93,12 @@ public class CharacterSelector {
     }
 
     //Create method to display all character info to the user
-    private static void displayCharacterInfo(Character character) {
-        System.out.println("\nCharacter created:");
+    static void displayCharacterInfo(Character character) {
+    	System.out.println("\nCharacter Information: ");
         System.out.println("Name: " + character.name);
         System.out.println("Class: " + character.characterClass);
+        System.out.println("Level: " + character.level);
+        System.out.println("\nStats: ");
         System.out.println("Strength: " + character.getStrength());
         System.out.println("Dexterity: " + character.getDexterity());
         System.out.println("Constitution: " + character.getConstitution());
