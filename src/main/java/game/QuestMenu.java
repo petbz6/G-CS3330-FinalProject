@@ -50,25 +50,41 @@ public class QuestMenu {
                 scanner.next();
             }
             questChoice = scanner.nextInt();
+            
             scanner.nextLine(); 
             if (questChoice < 1 || questChoice > quests.size() + 2) {
                 System.out.println("Invalid quest choice. Please enter a number between 1 and " + (quests.size() + 2) + ".");
             }
         } while (questChoice < 1 || questChoice > quests.size() + 2);
 
-        if (questChoice == 6) {
-            viewQuestStatus(scanner, character);
-        } else if (questChoice == 7) {
-            CharacterMenu.displayCharacterMenu(scanner, character);
-        } else {
-            Quest selectedQuest = quests.get(questChoice - 1);
-            if (selectedQuest.isCompleted() || questChoice == 1 || quests.get(questChoice - 2).isCompleted()) {
-                System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+        Quest selectedQuest = quests.get(questChoice - 1);
+        if(selectedQuest.isCompleted()) {
+			System.out.println("Already Completed!");
+			displayQuests(scanner, character);
+			return;
+		}
+        switch (questChoice) {
+        	case 1:
+        		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
                 questCompletedMenu(scanner, selectedQuest, character, questChoice);
-            } else {
-                System.out.println("You must complete the previous quest to unlock this quest.");
-                displayQuests(scanner, character);
-            }
+        	case 2:
+        		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+                questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        	case 3:
+        		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+                questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        	case 4:
+        		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+                questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        	case 5:
+        		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
+                questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        	case 6:
+        		viewQuestStatus(scanner, character);
+        	case 7:
+        		CharacterMenu.displayCharacterMenu(scanner, character);
+        	default:
+        		System.out.println("Invalid quest choice.");
         }
     }
 
