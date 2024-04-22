@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -30,6 +31,7 @@ public class Character {
         
         this.level = 1;
         this.experience = 0;
+        this.inventory = new ArrayList<>();
     }
 
     //Create method to roll for stats in a classic DnD fashion (roll a six sided die 4 times and drop the lowest roll)
