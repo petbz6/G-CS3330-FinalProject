@@ -20,6 +20,7 @@ public class Character {
     protected int level;
     protected int experience;
     protected int gems;
+    protected int HP;
     
     private List<Item> inventory;
 
@@ -178,7 +179,12 @@ public class Character {
 	    scanner.close(); 
 	}
 
-
+    public int getHP() {
+    	return this.HP;
+    }
     
+    public void setHP(int HP) {
+    	this.HP = HP;
+    }
 		
 }
