@@ -79,14 +79,17 @@ public class CharacterSelector {
             case 1:
                 playerCharacter = new Character(name);
                 playerCharacter.characterClass = "Fighter";
+                playerCharacter.setHP(20);
                 break;
             case 2:
                 playerCharacter = new Character(name);
                 playerCharacter.characterClass = "Wizard";
+                playerCharacter.setHP(20);
                 break;
             case 3:
                 playerCharacter = new Character(name);
                 playerCharacter.characterClass = "Rogue";
+                playerCharacter.setHP(20);
                 break;
         }
         return playerCharacter;
