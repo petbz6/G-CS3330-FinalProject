@@ -65,8 +65,16 @@ public class QuestMenu {
 		}
         switch (questChoice) {
         	case 1:
-        		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
-                questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        		QuestMethods quest1 = new QuestMethods();
+        		if(quest1.quest1(scanner, character) == 1)
+        		{
+        			questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        			character.gainXP(10);
+        		}
+        		else {
+        			System.out.println("You failed the first quest!");
+        		}
+        		return;
         	case 2:
         		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
                 questCompletedMenu(scanner, selectedQuest, character, questChoice);
