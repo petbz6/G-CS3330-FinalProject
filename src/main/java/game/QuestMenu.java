@@ -76,8 +76,16 @@ public class QuestMenu {
         		}
         		return;
         	case 2:
-        		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
-                questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        		QuestMethods quest2 = new QuestMethods();
+        		if(quest2.quest2(scanner, character) == 1)
+        		{
+        			questCompletedMenu(scanner, selectedQuest, character, questChoice);
+        			character.gainXP(10);
+        		}
+        		else {
+        			System.out.println("You failed the first quest!");
+        		}
+        		return;
         	case 3:
         		System.out.println("\n{PLACEHOLDER: Combat Occurs}\n");
                 questCompletedMenu(scanner, selectedQuest, character, questChoice);
@@ -150,20 +158,41 @@ public class QuestMenu {
 
         // Handle the chosen reward 
         if (rewardChoice >= 1 && rewardChoice <= rewards.size()) {
-            handleEquipmentReward(scanner, selectedQuest, rewardChoice);
+            handleEquipmentReward(scanner, selectedQuest, rewardChoice, character);
+            System.out.println("dkkkkkkkkkkkkkkkkkkdddddddddddddddddddddddddddddddddddddkkkkkkkkkkkkkkkkkkdddddddddddddddddddddddddddddddddddd");
         }
         
         // After completing the quest, go back to the quest menu
         displayQuests(scanner, character);
+        System.out.println("dkkkkkkkkkkkkkkkkkkdddddddddddddddddddddddddddddddddddd");
     }
     
     // Handles the equipment reward choice by the player
-    public static void handleEquipmentReward(Scanner scanner, Quest selectedQuest, int rewardChoice) {
+    public static void handleEquipmentReward(Scanner scanner, Quest selectedQuest, int rewardChoice, Character character) {
         // Gets the available rewards associated with the quest
         List<String> rewards = selectedQuest.getRewards();
         // Gets the reward chosen by the player
         String selectedReward = rewards.get(rewardChoice - 1);
         System.out.println("You have chosen: " + selectedReward);
+        //Add items
+        switch(selectedQuest.completionCount) {
+	        case 1:
+	        	if(scanner.nextInt() == 1) {
+	        		character.addWeapon(new game.items.BattleAxe());
+	        		return;
+	        	}
+	        	if(scanner.nextInt() == 2) {
+	        		character.addWeapon(new game.items.ShortSword());
+	        		return;
+	        	}
+	        	if(scanner.nextInt() == 3) {
+	        		return;
+//	        		character.addWeapon(new game.items.Warhammer());
+//	        		return;
+	        	}
+        	default:
+        		System.out.println("error");
+        }
     }
 
     // Handles the XP reward for the player and quest

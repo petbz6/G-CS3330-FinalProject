@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import game.items.*;
+
 //Create character class with classic DnD stat attributes
 public class Character {
     protected String name;
@@ -22,7 +24,8 @@ public class Character {
     protected int gems;
     protected int HP;
     
-    private List<Item> inventory;
+    private game.items.IItemStrategy weapon;
+    private game.items.IItemStrategy protection;
 
 
     //Create character instance
@@ -32,7 +35,6 @@ public class Character {
         
         this.level = 1;
         this.experience = 0;
-        this.inventory = new ArrayList<>();
     }
 
     //Create method to roll for stats in a classic DnD fashion (roll a six sided die 4 times and drop the lowest roll)
@@ -118,37 +120,42 @@ public class Character {
         return level * 50; 
     }
 
-    public boolean addItem(Item item) {
-    	if (this.inventory.size() >= 6) {
-    		//if inventory is full
-    		System.out.println("Could not add item to inventory");
-    		return false;
-    	}
-    	this.inventory.add(item);
-    	return true;
- 
+    public boolean addWeapon(game.items.IItemStrategy weapon) {
+    	this.weapon = weapon;
+		return true;
     }
-    public boolean removeItem(Item item) {
-    	if (this.inventory.contains(item)) {
-    		//remove the item from their inventory
-    		this.inventory.remove(item);
-    		return true;
-    	}
-    	else {
-    		System.out.println("Item was not found in inventory");
-    		return false;
-    		
-    	}
+    public boolean removeWeapon(Item item) {
+    	this.weapon = null;
+    	return true;
+    }
+    
+    public ListOfItems getWeapon() {
+    	return this.weapon.printType();
+    }
+    
+    public int getProtectionAmount(game.BadGuys badguy) {
+    	return this.weapon.getDamage(badguy);
+    }
+    
+    public boolean addProtectant(game.items.IItemStrategy weapon) {
+    	this.weapon = weapon;
+		return true;
+    }
+    public boolean removeProtectant(Item item) {
+    	this.weapon = null;
+    	return true;
+    }
+    
+    public ListOfItems getProtectant() {
+    	return this.weapon.printType();
+    }
+    
+    public int getDamage(game.BadGuys badguy) {
+    	return this.weapon.getDamage(badguy);
     }
     public void printInventory() {
-        if (this.inventory.isEmpty()) {
-            System.out.println("Your inventory is empty.");
-        } else {
-            System.out.println("Inventory items:");
-            for (Item item : this.inventory) {
-                System.out.println(item.toString());
-            }
-        }
+        System.out.println("Weapon: " + this.getWeapon());
+        System.out.println("Protection: " + this.getProtectant());
     }
 	public void repairItem(Item item) {
 		if (item.getHealth() < item.getmaxHealth()) {

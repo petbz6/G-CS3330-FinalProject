@@ -59,4 +59,58 @@ public class QuestMethods {
 		System.out.println("You won!");
 		return 1;
 	}
+	
+	public int quest2(Scanner scanner, Character character) {
+		System.out.println("You enter the room");
+		if(character.characterClass == "Fighter") {
+			System.out.println("You are a fighter in a village.");
+		}
+		if(character.characterClass == "Wizard") {
+			System.out.println("You are a wizard in a village");
+		}
+		if(character.characterClass == "Rogue") {
+			System.out.println("You are a rogue in a village");
+		}
+		int skeletons = 40;
+		character.setHP(20);
+		System.out.println("The Skeletons are invading the village!!");
+		for(int i = 0; i < 2; i++) {
+			int option;
+	        do {
+	        	if(i == 0) {
+	        	System.out.println("The skeletons come out and try to attack you!\n"
+	        			+ "What will you do??");
+	        	}
+	        	else {
+	        		System.out.println("You hear more skeletons hiding!\n"
+		    				+ "They try to hit you!");
+	        	}
+	        	System.out.print("You have your (" + character.getWeapon() + "). What would you like to do?\n"
+						+ "1. Swing your (" + character.getWeapon() + ").\n"
+						+ "2. Swing your fist.\n"
+						+ "3. Run!\n"
+						+ "Select your option: ");
+	            while (!scanner.hasNextInt()) {
+	                System.out.println("Invalid input. Please enter a number.");
+	                scanner.next();
+	            }
+	            option = scanner.nextInt();
+	            
+	            scanner.nextLine(); 
+	            if (option < 1 || option > 3) {
+	                System.out.println("Invalid option. Please enter a number between 1 and 3");
+	            }
+	        } while (option < 1 || option > 3);
+	        
+	        if(option == 3) {
+	        	System.out.println("The skeletons hit you and you die!");
+	        	return 0;
+	        }
+	        skeletons = skeletons - character.getDamage(BadGuys.skeletons);
+	        System.out.println(skeletons);
+		}
+		System.out.println("You knocked out the last bandit!!");
+		System.out.println("You won!");
+		return 1;
+	}
 }
