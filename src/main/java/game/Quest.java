@@ -8,7 +8,6 @@ public class Quest {
     protected List<String> equipmentReward;
     protected int xpReward;
     protected boolean completed;
-    protected int completionCount = 0;
     
     // Constructor
     public Quest(String questName, List<String> equipmentReward, int xpReward) {
@@ -16,7 +15,6 @@ public class Quest {
         this.equipmentReward = equipmentReward;
         this.xpReward = xpReward;
         this.completed = false;
-        this.completionCount = 0;
     }
 
 	public List<String> getRewards() {
@@ -57,16 +55,4 @@ public class Quest {
         this.completed = completed;
     }
 	
-    public int getCompletionCount() {
-		return completionCount;
-	}
-
-	public void setCompletionCount(int completionCount) {
-		this.completionCount = completionCount;
-	}
-    
-	// Increment completion count
-    public void CompletionCount() {
-        completionCount++;
-    }   
 }
