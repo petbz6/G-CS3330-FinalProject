@@ -2,13 +2,13 @@ package game.items;
 
 import game.*;
 
-public class Warhammer implements IItemStrategy {
-	private int skeletons = 20;
-	private int ghouls = 16;
-	private int zombies = 25;
-	private int evilKnight = 12;
-	private int dragon = 10;
-	private game.ListOfItems type = game.ListOfItems.Warhammer;
+public class Darkblade implements IItemStrategy{
+	private int skeletons = 50;
+	private int ghouls = 50;
+	private int zombies = 1000;
+	private int evilKnight = 100;
+	private int dragon = 100;
+	private game.ListOfItems type = game.ListOfItems.Darkblade;
 	
 	public String printType() {
 		return type.name();

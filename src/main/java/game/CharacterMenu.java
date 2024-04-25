@@ -26,7 +26,7 @@ public class CharacterMenu {
                         CharacterSelector.displayCharacterInfo(character);
                         break;
                     case 2:
-                        System.out.println("(PLACEHOLDER)");
+                        character.printInventory();
                         break;
                     case 3:
                         QuestMenu.displayQuests(scanner, character);

@@ -4,6 +4,7 @@ import game.*;
 import java.lang.*;
 
 public interface IItemStrategy {
-	int getDamage(game.BadGuys badguy);
-	ListOfItems printType();
+	String printType();
+	int usedFor(game.ListOfItems item);
+	int getStat(game.BadGuys badguy);
 }

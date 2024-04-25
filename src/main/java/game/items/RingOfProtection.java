@@ -2,13 +2,13 @@ package game.items;
 
 import game.*;
 
-public class Warhammer implements IItemStrategy {
+public class RingOfProtection implements IItemStrategy {
 	private int skeletons = 20;
-	private int ghouls = 16;
-	private int zombies = 25;
-	private int evilKnight = 12;
-	private int dragon = 10;
-	private game.ListOfItems type = game.ListOfItems.Warhammer;
+	private int ghouls = 20;
+	private int zombies = 20;
+	private int evilKnight = 20;
+	private int dragon = 20;
+	private game.ListOfItems type = game.ListOfItems.RingOfProtection;
 	
 	public String printType() {
 		return type.name();
@@ -33,6 +33,6 @@ public class Warhammer implements IItemStrategy {
 	}
 	
 	public int usedFor(game.ListOfItems item) {
-		return 1;// 1 = weapon
+		return 0;// 0 = protection
 	}
 }

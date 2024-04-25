@@ -8,8 +8,17 @@ public class ShortSword implements IItemStrategy {
 	private int zombies = 25;
 	private int evilKnight = 12;
 	private int dragon = 10;
+	private game.ListOfItems type = game.ListOfItems.ShortSword;
 	
-	public int getDamage(game.BadGuys badguy) {
+	public String printType() {
+		return type.name();
+	}
+	
+	public int usedFor(game.ListOfItems item) {
+		return 1;// 1 = weapon
+	}
+	
+	public int getStat(game.BadGuys badguy) {
         switch (badguy) {
 	        case skeletons:
 	            return skeletons;
@@ -25,9 +34,5 @@ public class ShortSword implements IItemStrategy {
 	            System.out.println("Invalid badguy!");
 	            return -1;
         }
-	}
-	
-	public game.ListOfItems printType() {
-		return game.ListOfItems.ShortSword;
 	}
 }

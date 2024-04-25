@@ -91,6 +91,15 @@ public class QuestMenu {
                 }
                 return; // Add return statement to exit the method after completing a quest
             // Add cases for other quests
+            case 3:
+            	questCompletedMenu(scanner, selectedQuest, character, questChoice);
+                character.gainXP(10);
+            case 4:
+            	questCompletedMenu(scanner, selectedQuest, character, questChoice);
+                character.gainXP(10);
+            case 5:
+            	questCompletedMenu(scanner, selectedQuest, character, questChoice);
+                character.gainXP(10);
             default:
                 System.out.println("Invalid quest choice.");
         }
@@ -172,13 +181,13 @@ public class QuestMenu {
                 System.out.println("Added Short Sword to inventory.");
                 break;
             case 2:
-                
                 character.addWeapon(new game.items.BattleAxe());
                 System.out.println("Added Battle Axe to inventory.");
                 break;
             case 3:
-//        		character.addWeapon(new game.items.Warhammer());
-//        		return;
+        		character.addWeapon(new game.items.Warhammer());
+                System.out.println("Added Warhammer to inventory.");
+                break;
             default:
                 System.out.println("Invalid reward choice.");
                 break;

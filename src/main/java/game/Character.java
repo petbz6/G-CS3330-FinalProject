@@ -24,8 +24,9 @@ public class Character {
     protected int gems;
     protected int HP;
     
-    private game.items.IItemStrategy weapon;
-    private game.items.IItemStrategy protection;
+    private game.items.IItemStrategy weapon = null;
+    private game.items.IItemStrategy protection = null;
+    private game.items.IItemStrategy unique = null;
 
 
     //Create character instance
@@ -124,67 +125,104 @@ public class Character {
     	this.weapon = weapon;
 		return true;
     }
-    public boolean removeWeapon(Item item) {
-    	this.weapon = null;
-    	return true;
+    public boolean removeWeapon(game.items.IItemStrategy weapon) {
+    	if(weapon == this.weapon && this.weapon != null) {
+    		this.weapon = null;
+        	return true;
+    	}
+    	return false;
     }
     
-    public ListOfItems getWeapon() {
+    public String getWeapon() {
     	return this.weapon.printType();
     }
     
-    public int getProtectionAmount(game.BadGuys badguy) {
-    	return this.weapon.getDamage(badguy);
+    public int getDamage(BadGuys badguy) {
+    	return this.weapon.getStat(badguy);
     }
     
-    public boolean addProtectant(game.items.IItemStrategy weapon) {
+    public boolean addProtectant(IItemStrategy weapon) {
     	this.weapon = weapon;
 		return true;
     }
-    public boolean removeProtectant(Item item) {
-    	this.weapon = null;
-    	return true;
+    public boolean removeProtectant(IItemStrategy item) {
+    	if(item == this.protection && this.protection != null) {
+    		this.protection = null;
+        	return true;
+    	}
+    	return false;
     }
     
-    public ListOfItems getProtectant() {
-    	return this.weapon.printType();
+//    public String getProtectant() {
+//    	return this.protection.printType();
+//    }
+
+    public int getProtectionAmount(BadGuys badguy) {
+    	return this.weapon.getStat(badguy);
     }
     
-    public int getDamage(game.BadGuys badguy) {
-    	return this.weapon.getDamage(badguy);
+    public boolean addUnique(IItemStrategy unique) {
+    	this.unique = unique;
+		return true;
     }
+    public boolean removeUnique(IItemStrategy unique) {
+    	if(unique == this.unique && this.unique != null) {
+    		this.unique = null;
+        	return true;
+    	}
+    	return false;
+    }
+    
+//    public ListOfItems getUnique() {
+//    	return this.unique.printType();
+//    }
+
+    public int getUnuiqueAmount(BadGuys badguy) {
+    	return this.unique.getStat(badguy);
+    }
+    
     public void printInventory() {
-        System.out.println("Weapon: " + this.getWeapon());
-        System.out.println("Protection: " + this.getProtectant());
+    	if(weapon != null) {
+    		System.out.println("Weapon: " + weapon.printType());
+    	}
+        if(protection != null) {
+        	System.out.println("Protection: " + protection.printType());
+        }
+        if(unique != null) {
+            System.out.println("Unique: " + unique.printType());
+        }
+        if((weapon == null) & (protection == null) & (unique == null)) {
+        	System.out.println("\nInventory Empty");
+        }
     }
-	public void repairItem(Item item) {
-		if (item.getHealth() < item.getmaxHealth()) {
-			item.setHealth(item.getmaxHealth());
-		}
-		else {
-			System.out.println("Item is currently at its max health");
-		}
-	}
-	public void upgradeItemHealth(Item item) {
-	    Scanner scanner = new Scanner(System.in);
-	    System.out.println("Would you like to pay 50 gems to upgrade your item's health by 50? (yes/no)");
-
-	    String input = scanner.nextLine().trim().toLowerCase();
-
-	    if ("yes".equals(input)) {
-	        if (this.gems >= 50) { // if character has 50 or more gems
-	            item.setmaxHealth(item.getmaxHealth() + 50); // add 50 to items max health
-	            this.gems -= 50; // Deduct the gems.
-	            item.setHealth(item.getmaxHealth()); 
-	            System.out.println("Item health has been upgraded to " + item.getmaxHealth());
-	        } else {
-	            System.out.println("You do not have enough gems to upgrade the item.");
-	        }
-	    } else {
-	        System.out.println("Upgrade cancelled.");
-	    }
-	    scanner.close(); 
-	}
+//	public void repairItem(Item item) {
+//		if (item.getHealth() < item.getmaxHealth()) {
+//			item.setHealth(item.getmaxHealth());
+//		}
+//		else {
+//			System.out.println("Item is currently at its max health");
+//		}
+//	}
+//	public void upgradeItemHealth(Item item) {
+//	    Scanner scanner = new Scanner(System.in);
+//	    System.out.println("Would you like to pay 50 gems to upgrade your item's health by 50? (yes/no)");
+//
+//	    String input = scanner.nextLine().trim().toLowerCase();
+//
+//	    if ("yes".equals(input)) {
+//	        if (this.gems >= 50) { // if character has 50 or more gems
+//	            item.setmaxHealth(item.getmaxHealth() + 50); // add 50 to items max health
+//	            this.gems -= 50; // Deduct the gems.
+//	            item.setHealth(item.getmaxHealth()); 
+//	            System.out.println("Item health has been upgraded to " + item.getmaxHealth());
+//	        } else {
+//	            System.out.println("You do not have enough gems to upgrade the item.");
+//	        }
+//	    } else {
+//	        System.out.println("Upgrade cancelled.");
+//	    }
+//	    scanner.close(); 
+//	}
 
     public int getHP() {
     	return this.HP;
