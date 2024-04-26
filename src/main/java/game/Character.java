@@ -23,6 +23,7 @@ public class Character {
     protected int experience;
     protected int gems;
     protected int HP;
+    protected int fistDamage = 2;
     
     private game.items.IItemStrategy weapon = null;
     private game.items.IItemStrategy protection = null;
@@ -153,9 +154,9 @@ public class Character {
     	return false;
     }
     
-//    public String getProtectant() {
-//    	return this.protection.printType();
-//    }
+    public String getProtectant() {
+    	return this.protection.printType();
+    }
 
     public int getProtectionAmount(BadGuys badguy) {
     	return this.weapon.getStat(badguy);
@@ -173,9 +174,9 @@ public class Character {
     	return false;
     }
     
-//    public ListOfItems getUnique() {
-//    	return this.unique.printType();
-//    }
+    public String getUnique() {
+    	return this.unique.printType();
+    }
 
     public int getUnuiqueAmount(BadGuys badguy) {
     	return this.unique.getStat(badguy);
@@ -230,6 +231,14 @@ public class Character {
     
     public void setHP(int HP) {
     	this.HP = HP;
+    }
+    
+    public int getFistDamage() {
+    	return this.fistDamage;
+    }
+    
+    public void setFistDamage(int fistDamage) {
+    	this.fistDamage = fistDamage;
     }
 		
 }

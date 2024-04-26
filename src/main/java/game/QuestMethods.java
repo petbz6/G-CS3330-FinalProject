@@ -71,19 +71,27 @@ public class QuestMethods {
 		if(character.characterClass == "Rogue") {
 			System.out.println("You are a rogue in a village");
 		}
-		int skeletons = 40;
+		int skeleton;
 		character.setHP(20);
-		System.out.println("The Skeletons are invading the village!!");
-		for(int i = 0; i < 2; i++) {
+		System.out.println("The Skeletons are invading the village!! You see them attacking and tormenting the villagers! You have to save them!!\n"
+				+ "They are going to die if you don't! You might get a prize from the mayor if you do!!\n"
+				+ "There are 5 skeletons and each one has an unknown amount of HP. You must defeat each one to win the quest!\n"
+				+ "Luckily they don't have anything besides their fists to hit you with. But you choose (" + character.getWeapon() + ") and you"
+						+ " may use that to destroy the skeletons!");
+		for(int i = 0; i < 5; i++) {
+			skeleton = 20;
 			int option;
 	        do {
 	        	if(i == 0) {
 	        	System.out.println("The skeletons come out and try to attack you!\n"
 	        			+ "What will you do??");
 	        	}
-	        	else {
-	        		System.out.println("You hear more skeletons hiding!\n"
+	        	else if(i != 0 & i != 4){
+	        		System.out.println("You see more skeletons doing everything they can to kill you!\n"
 		    				+ "They try to hit you!");
+	        	}
+	        	else {
+	        		System.out.println("You see one last skeleton! You must destroy it!");
 	        	}
 	        	System.out.print("You have your (" + character.getWeapon() + "). What would you like to do?\n"
 						+ "1. Swing your (" + character.getWeapon() + ").\n"
@@ -102,15 +110,38 @@ public class QuestMethods {
 	            }
 	        } while (option < 1 || option > 3);
 	        
+	        
+	        if(option == 1) {
+	        	System.out.println("You swing your (" + character.getWeapon() + ")!!");
+		        skeleton = skeleton - character.getDamage(BadGuys.skeletons);
+	        }
+	        if(option == 2) {
+	        	if(character.getStrength() < 10) {
+	        		System.out.println("You swing your fist!\n"
+		        			+ "You hit the skeleton but you only do " + String.valueOf(character.getFistDamage()) + " points of damage because you are weak!\n"
+		        			+ "You get overwhelmed by the skeletons as they come to attack you and die!!");
+		        	skeleton = skeleton - (character.getFistDamage()*character.getStrength());
+		        	System.out.println("The skeleton you hit still has " + String.valueOf(skeleton) + " HP.\n"
+		        			+ "The skeleton as well as his friends team up and kill you!!");
+		        	return 0;
+	        	}
+	        	if(character.getStrength() >= 10) {
+	        		System.out.println("You are stronger than average!!\n"
+	        				+ "You hit the skeleton and it shatters to the ground!");
+	        		skeleton = skeleton - (character.getFistDamage()*character.getStrength());
+	        	}
+	        	
+	        }
 	        if(option == 3) {
-	        	System.out.println("The skeletons hit you and you die!");
+	        	System.out.println("The skeletons hit you as you are running away and you die!");
 	        	return 0;
 	        }
-	        skeletons = skeletons - character.getDamage(BadGuys.skeletons);
-	        System.out.println(skeletons);
+	        if(i == 4) {
+	        	System.out.println("You knocked out the last skeleton!! You won!\n"
+	    				+ "The mayor is so happy! He congradulated you!");
+	    		return 1;
+	        }
 		}
-		System.out.println("You knocked out the last bandit!!");
-		System.out.println("You won!");
-		return 1;
+		return 0;
 	}
 }
