@@ -2,7 +2,7 @@ package game.items;
 
 import game.*;
 
-public class Warhammer implements IItemStrategy {
+public class GreatSwordOfDestruction implements IItemStrategy{
 	private int skeletons = 20;
 	private int ghouls = 16;
 	private int zombies = 25;
@@ -11,7 +11,7 @@ public class Warhammer implements IItemStrategy {
 	private boolean isFavorited;
 	private int health = 20;
 	private int maxHealth = 20;
-	private game.ListOfItems type = game.ListOfItems.Warhammer;
+	private game.ListOfItems type = game.ListOfItems.GreatSwordOfDestruction;
 	
 	public String printType() {
 		return type.name();
@@ -46,6 +46,7 @@ public class Warhammer implements IItemStrategy {
 	public boolean isFavorited() {
 		return this.isFavorited;
 	}
+
 	public void upgradeItem() {
 		this.dragon += 5;
 		this.evilKnight += 5;
@@ -66,4 +67,5 @@ public class Warhammer implements IItemStrategy {
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
+	
 }

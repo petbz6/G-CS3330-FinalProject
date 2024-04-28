@@ -9,5 +9,9 @@ public interface IItemStrategy {
 	void toggleFavorite();
 	boolean isFavorited();
 	void upgradeItem();
+	int getHealth();
+	void setHealth(int health);
+	int getMaxHealth();
+	void setMaxHealth(int maxHealth);
 
 }

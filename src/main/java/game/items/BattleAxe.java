@@ -11,8 +11,13 @@ public class BattleAxe implements IItemStrategy{
 	private boolean isFavorited;
 	private int health = 20;
 	private int maxHealth = 20;
+	private game.ListOfItems type = game.ListOfItems.BattleAxe;
 	
-	public int getDamage(game.BadGuys badguy) {
+	public String printType() {
+		return type.name();
+	}
+	
+	public int getStat(game.BadGuys badguy) {
         switch (badguy) {
 	        case skeletons:
 	            return skeletons;
@@ -30,8 +35,8 @@ public class BattleAxe implements IItemStrategy{
         }
 	}
 	
-	public game.ListOfItems printType() {
-		return game.ListOfItems.BattleAxe;
+	public int usedFor(game.ListOfItems item) {
+		return 1;// 1 = weapon
 	}
 	
 	public void toggleFavorite() {

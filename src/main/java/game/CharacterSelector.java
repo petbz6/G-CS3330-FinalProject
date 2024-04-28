@@ -108,5 +108,6 @@ public class CharacterSelector {
         System.out.println("Intelligence: " + character.getIntelligence());
         System.out.println("Wisdom: " + character.getWisdom());
         System.out.println("Charisma: " + character.getCharisma());
+        character.printInventory();
     }
 }

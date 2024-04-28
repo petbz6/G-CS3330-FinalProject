@@ -11,8 +11,17 @@ public class ShortSword implements IItemStrategy {
 	private boolean isFavorited;
 	private int health = 20;
 	private int maxHealth = 20;
+	private game.ListOfItems type = game.ListOfItems.ShortSword;
 	
-	public int getDamage(game.BadGuys badguy) {
+	public String printType() {
+		return type.name();
+	}
+	
+	public int usedFor(game.ListOfItems item) {
+		return 1;// 1 = weapon
+	}
+	
+	public int getStat(game.BadGuys badguy) {
         switch (badguy) {
 	        case skeletons:
 	            return skeletons;
@@ -29,7 +38,6 @@ public class ShortSword implements IItemStrategy {
 	            return -1;
         }
 	}
-	
 	
 	public game.ListOfItems printType() {
 		return game.ListOfItems.ShortSword;
@@ -63,4 +71,5 @@ public class ShortSword implements IItemStrategy {
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
+
 }

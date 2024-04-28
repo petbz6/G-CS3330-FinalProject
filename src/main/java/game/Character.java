@@ -23,9 +23,11 @@ public class Character {
     protected int experience;
     protected int gems;
     protected int HP;
+    protected int fistDamage = 2;
     
-    private game.items.IItemStrategy weapon;
-    private game.items.IItemStrategy protection;
+    private game.items.IItemStrategy weapon = null;
+    private game.items.IItemStrategy protection = null;
+    private game.items.IItemStrategy unique = null;
 
 
     //Create character instance
@@ -124,38 +126,75 @@ public class Character {
     	this.weapon = weapon;
 		return true;
     }
-    public boolean removeWeapon(Item item) {
-    	this.weapon = null;
-    	return true;
+    public boolean removeWeapon(game.items.IItemStrategy weapon) {
+    	if(weapon == this.weapon && this.weapon != null) {
+    		this.weapon = null;
+        	return true;
+    	}
+    	return false;
     }
     
-    public ListOfItems getWeapon() {
+    public String getWeapon() {
     	return this.weapon.printType();
     }
     
-    public int getProtectionAmount(game.BadGuys badguy) {
-    	return this.weapon.getDamage(badguy);
+    public int getDamage(BadGuys badguy) {
+    	return this.weapon.getStat(badguy);
     }
     
-    public boolean addProtectant(game.items.IItemStrategy weapon) {
-    	this.weapon = weapon;
+    public boolean addProtectant(IItemStrategy protection) {
+    	this.protection = protection;
 		return true;
     }
-    public boolean removeProtectant(Item item) {
-    	this.weapon = null;
-    	return true;
+    public boolean removeProtectant(IItemStrategy item) {
+    	if(item == this.protection && this.protection != null) {
+    		this.protection = null;
+        	return true;
+    	}
+    	return false;
     }
     
-    public ListOfItems getProtectant() {
-    	return this.weapon.printType();
+    public String getProtectant() {
+    	return this.protection.printType();
+    }
+
+    public int getProtectionAmount(BadGuys badguy) {
+    	return this.weapon.getStat(badguy);
     }
     
-    public int getDamage(game.BadGuys badguy) {
-    	return this.weapon.getDamage(badguy);
+    public boolean addUnique(IItemStrategy unique) {
+    	this.unique = unique;
+		return true;
     }
+    public boolean removeUnique(IItemStrategy unique) {
+    	if(unique == this.unique && this.unique != null) {
+    		this.unique = null;
+        	return true;
+    	}
+    	return false;
+    }
+    
+    public String getUnique() {
+    	return this.unique.printType();
+    }
+
+    public int getUnuiqueAmount(BadGuys badguy) {
+    	return this.unique.getStat(badguy);
+    }
+    
     public void printInventory() {
-        System.out.println("Weapon: " + this.getWeapon());
-        System.out.println("Protection: " + this.getProtectant());
+        if (weapon != null) {
+            System.out.println("Weapon: " + weapon.printType());
+        }
+        if (protection != null) {
+            System.out.println("Protection: " + protection.printType());
+        }
+        if (unique != null) {
+            System.out.println("Unique: " + unique.printType());
+        }
+        if (weapon == null && protection == null && unique == null) {
+            System.out.println("\nInventory Empty");
+        }
     }
 	public void repairItem(IItemStrategy item) {
 		if (item.getHealth() < item.getMaxHealth()) {
@@ -185,13 +224,21 @@ public class Character {
 	    }
 	    scanner.close(); 
 	}
-
+	
     public int getHP() {
     	return this.HP;
     }
     
     public void setHP(int HP) {
     	this.HP = HP;
+    }
+    
+    public int getFistDamage() {
+    	return this.fistDamage;
+    }
+    
+    public void setFistDamage(int fistDamage) {
+    	this.fistDamage = fistDamage;
     }
 		
 }
