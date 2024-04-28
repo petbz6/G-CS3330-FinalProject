@@ -157,26 +157,26 @@ public class Character {
         System.out.println("Weapon: " + this.getWeapon());
         System.out.println("Protection: " + this.getProtectant());
     }
-	public void repairItem(Item item) {
-		if (item.getHealth() < item.getmaxHealth()) {
-			item.setHealth(item.getmaxHealth());
+	public void repairItem(IItemStrategy item) {
+		if (item.getHealth() < item.getMaxHealth()) {
+			item.setHealth(item.getMaxHealth());
 		}
 		else {
 			System.out.println("Item is currently at its max health");
 		}
 	}
-	public void upgradeItemHealth(Item item) {
+	public void upgradeItemHealth(IItemStrategy item) {
 	    Scanner scanner = new Scanner(System.in);
-	    System.out.println("Would you like to pay 50 gems to upgrade your item's health by 50? (yes/no)");
+	    System.out.println("Would you like to pay 50 gems to upgrade your item's health by 5 points? (yes/no)");
 
 	    String input = scanner.nextLine().trim().toLowerCase();
 
 	    if ("yes".equals(input)) {
 	        if (this.gems >= 50) { // if character has 50 or more gems
-	            item.setmaxHealth(item.getmaxHealth() + 50); // add 50 to items max health
+	            item.setMaxHealth(item.getMaxHealth() + 5); // add 5 to items max health
 	            this.gems -= 50; // Deduct the gems.
-	            item.setHealth(item.getmaxHealth()); 
-	            System.out.println("Item health has been upgraded to " + item.getmaxHealth());
+	            item.setHealth(item.getMaxHealth()); 
+	            System.out.println("Item health has been upgraded to " + item.getMaxHealth());
 	        } else {
 	            System.out.println("You do not have enough gems to upgrade the item.");
 	        }

@@ -9,7 +9,8 @@ public class BattleAxe implements IItemStrategy{
 	private int evilKnight = 12;
 	private int dragon = 10;
 	private boolean isFavorited;
-	private int health;
+	private int health = 20;
+	private int maxHealth = 20;
 	
 	public int getDamage(game.BadGuys badguy) {
         switch (badguy) {
@@ -47,6 +48,19 @@ public class BattleAxe implements IItemStrategy{
 		this.ghouls += 5;
 		this.skeletons += 5;
 		this.zombies += 5;
+	}
+	
+	public int getHealth() {
+		return this.health;
+	}
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	public int getMaxHealth() {
+		return this.maxHealth;
+	}
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
 	}
 	
 }

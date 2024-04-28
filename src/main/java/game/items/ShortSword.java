@@ -9,8 +9,8 @@ public class ShortSword implements IItemStrategy {
 	private int evilKnight = 12;
 	private int dragon = 10;
 	private boolean isFavorited;
-	private int health;
-	private int maxHealth;
+	private int health = 20;
+	private int maxHealth = 20;
 	
 	public int getDamage(game.BadGuys badguy) {
         switch (badguy) {
