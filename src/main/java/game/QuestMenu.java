@@ -16,7 +16,7 @@ public class QuestMenu {
         quests.add(new Quest("Defend the village", List.of("Broad Shield", "Helm of Justice", "Gloves of Salvation"), 60));
         quests.add(new Quest("Save the king", List.of("Boots of Swiftness", "Ring of Protection", "Cloak of Invisibility"), 75));
         quests.add(new Quest("Defeat the evil knight", List.of("Chestplate of Fortitude", "Cowl of Shadows", "Darkblade"), 100));
-        quests.add(new Quest("Slay the dragon", List.of("Amulet of Fire", "Inferno Staff", "Greatsword of Destruction"), 200));
+        quests.add(new Quest("Slay the Dragon", List.of("Amulet of Fire", "Inferno Staff", "Greatsword of Destruction"), 200));
 
         return quests;
     }
@@ -175,9 +175,36 @@ public class QuestMenu {
         System.out.println("You have chosen: " + selectedReward);
         
         // Process the reward choice
+        switch (selectedQuest.getQuestName()) {
+            case "Defeat the bandits":
+                Quest1Reward(rewardChoice, character);
+                break;
+            case "Defend the village":
+                Quest2Reward(rewardChoice, character);
+                break;
+            case "Save the King":
+                Quest3Reward(rewardChoice, character);
+                break;
+            case "Defeat the Evil Knight":
+                Quest4Reward(rewardChoice, character);
+                break;
+            case "Slay the Dragon":
+            	Quest5Reward(rewardChoice, character);
+            	break;
+            default:
+                System.out.println("Invalid quest choice.");
+                break;
+        }
+        
+        // Loop back to the quest menu
+        QuestMenu.displayQuests(scanner, character);
+    }
+    
+    // Handles rewards for the first quest
+    private static void Quest1Reward(int rewardChoice, Character character) {
         switch (rewardChoice) {
             case 1:
-            	character.addWeapon(new game.items.ShortSword());
+                character.addWeapon(new game.items.ShortSword());
                 System.out.println("Added Short Sword to inventory.");
                 break;
             case 2:
@@ -185,17 +212,99 @@ public class QuestMenu {
                 System.out.println("Added Battle Axe to inventory.");
                 break;
             case 3:
-        		character.addWeapon(new game.items.Warhammer());
+                character.addWeapon(new game.items.Warhammer());
                 System.out.println("Added Warhammer to inventory.");
                 break;
             default:
                 System.out.println("Invalid reward choice.");
                 break;
         }
-        
-        // Loop back to the quest menu
-        QuestMenu.displayQuests(scanner, character);
     }
+    
+    // Handles rewards for the second quest
+    private static void Quest2Reward(int rewardChoice, Character character) {
+        switch (rewardChoice) {
+            case 1:
+                //character.addProtection(new game.items.BroadShield());
+                System.out.println("Added Broad Shield to inventory.");
+                break;
+            case 2:
+                //character.addProtection(new game.items.HelmOfJustice());
+                System.out.println("Added Helm of Justice to inventory.");
+                break;
+            case 3:
+                //character.addProtection(new game.items.GlovesOfSalvation());
+                System.out.println("Added Gloves of Salvation to inventory.");
+                break;
+            default:
+                System.out.println("Invalid reward choice.");
+                break;
+        }
+    }
+    
+    // Handles rewards for the third quest
+    private static void Quest3Reward(int rewardChoice, Character character) {
+        switch (rewardChoice) {
+            case 1:
+                //character.addUnique(new game.items.BootsOfSwiftness());
+                System.out.println("Added Boots of Swiftness to inventory.");
+                break;
+            case 2:
+                //character.addProtection(new game.items.RingOfProtection());
+                System.out.println("Added Ring of Protection to inventory.");
+                break;
+            case 3:
+                //character.addUnique(new game.items.CloakOfInvisibility());
+                System.out.println("Added Cloak of Invisibilty to inventory.");
+                break;
+            default:
+                System.out.println("Invalid reward choice.");
+                break;
+        }
+    }
+    
+    // Handles rewards for the fourth quest
+    private static void Quest4Reward(int rewardChoice, Character character) {
+        switch (rewardChoice) {
+            case 1:
+                //character.addProtection(new game.items.ChestplateOfFortitude());
+                System.out.println("Added Chestplate of Fortitude to inventory.");
+                break;
+            case 2:
+                //character.addUnique(new game.items.CowlOfShadows());
+                System.out.println("Added Cowl of Shadows to inventory.");
+                break;
+            case 3:
+                //character.addWeapon(new game.items.Darkblade());
+                System.out.println("Added Darkblade to inventory.");
+                break;
+            default:
+                System.out.println("Invalid reward choice.");
+                break;
+        }
+    }
+    
+    // Handles rewards for the fifth quest
+    private static void Quest5Reward(int rewardChoice, Character character) {
+        switch (rewardChoice) {
+            case 1:
+                //character.addUnique(new game.items.AmuletOfFire());
+                System.out.println("Added Amulet of Fire to inventory.");
+                break;
+            case 2:
+                //character.addWeapon(new game.items.InfernoStaff());
+                System.out.println("Added Inferno Staff to inventory.");
+                break;
+            case 3:
+                //character.addWeapon(new game.items.GreatSwordOfDestruction());
+                System.out.println("Added Greatsword of Destruction to inventory.");
+                break;
+            default:
+                System.out.println("Invalid reward choice.");
+                break;
+        }
+    }
+
 
 
     // Handles the XP reward for the player and quest
