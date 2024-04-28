@@ -225,7 +225,7 @@ public class QuestMenu {
     private static void Quest2Reward(int rewardChoice, Character character) {
         switch (rewardChoice) {
             case 1:
-                //character.addProtection(new game.items.BroadShield());
+                character.addProtectant(new game.items.BroadShield());
                 System.out.println("Added Broad Shield to inventory.");
                 break;
             case 2:

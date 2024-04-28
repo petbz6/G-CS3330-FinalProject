@@ -142,8 +142,8 @@ public class Character {
     	return this.weapon.getStat(badguy);
     }
     
-    public boolean addProtectant(IItemStrategy weapon) {
-    	this.weapon = weapon;
+    public boolean addProtectant(IItemStrategy protection) {
+    	this.protection = protection;
 		return true;
     }
     public boolean removeProtectant(IItemStrategy item) {
@@ -183,19 +183,20 @@ public class Character {
     }
     
     public void printInventory() {
-    	if(weapon != null) {
-    		System.out.println("Weapon: " + weapon.printType());
-    	}
-        if(protection != null) {
-        	System.out.println("Protection: " + protection.printType());
+        if (weapon != null) {
+            System.out.println("Weapon: " + weapon.printType());
         }
-        if(unique != null) {
+        if (protection != null) {
+            System.out.println("Protection: " + protection.printType());
+        }
+        if (unique != null) {
             System.out.println("Unique: " + unique.printType());
         }
-        if((weapon == null) & (protection == null) & (unique == null)) {
-        	System.out.println("\nInventory Empty");
+        if (weapon == null && protection == null && unique == null) {
+            System.out.println("\nInventory Empty");
         }
     }
+
 //	public void repairItem(Item item) {
 //		if (item.getHealth() < item.getmaxHealth()) {
 //			item.setHealth(item.getmaxHealth());
