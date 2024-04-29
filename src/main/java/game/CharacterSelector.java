@@ -38,9 +38,9 @@ public class CharacterSelector {
     //Create method to prompt the user to select a character class
     private static void displayMenu() {
         System.out.println("\nChoose your character class:");
-        System.out.println("1. Fighter");
-        System.out.println("2. Wizard");
-        System.out.println("3. Rogue");
+        System.out.println("1. Fighter (+2 STR -2 WIS +1 CON");
+        System.out.println("2. Wizard (+2 INT -2 STR +1 WIS");
+        System.out.println("3. Rogue (+2 DEX -2 CON +1 CHA");
         System.out.print("Enter your choice: ");
     }
 
@@ -79,16 +79,25 @@ public class CharacterSelector {
             case 1:
                 playerCharacter = new Character(name);
                 playerCharacter.characterClass = "Fighter";
+                playerCharacter.strength += 2;
+                playerCharacter.constitution += 1;
+                playerCharacter.wisdom -= 2;
                 playerCharacter.setHP(20);
                 break;
             case 2:
                 playerCharacter = new Character(name);
                 playerCharacter.characterClass = "Wizard";
+                playerCharacter.intelligence += 2;
+                playerCharacter.wisdom += 1;
+                playerCharacter.strength -= 2;
                 playerCharacter.setHP(20);
                 break;
             case 3:
                 playerCharacter = new Character(name);
                 playerCharacter.characterClass = "Rogue";
+                playerCharacter.dexterity += 2;
+                playerCharacter.charisma += 1;
+                playerCharacter.constitution -= 2;
                 playerCharacter.setHP(20);
                 break;
         }
