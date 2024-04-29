@@ -8,7 +8,7 @@ public class ShortSword implements IItemStrategy {
 	private int zombies = 25;
 	private int evilKnight = 12;
 	private int dragon = 10;
-	private boolean isFavorited;
+	private boolean isFavorited = false;
 	private int health = 20;
 	private int maxHealth = 20;
 	private game.ListOfItems type = game.ListOfItems.ShortSword;
@@ -38,11 +38,6 @@ public class ShortSword implements IItemStrategy {
 	            return -1;
         }
 	}
-	
-	public game.ListOfItems printType() {
-		return game.ListOfItems.ShortSword;
-	}
-	
 	
 	public void toggleFavorite() {
 		this.isFavorited = !this.isFavorited;

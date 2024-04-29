@@ -8,10 +8,10 @@ public class BattleAxe implements IItemStrategy{
 	private int zombies = 25;
 	private int evilKnight = 12;
 	private int dragon = 10;
-	private boolean isFavorited;
 	private int health = 20;
 	private int maxHealth = 20;
 	private game.ListOfItems type = game.ListOfItems.BattleAxe;
+	private boolean isFavorited = false;
 	
 	public String printType() {
 		return type.name();
@@ -20,15 +20,15 @@ public class BattleAxe implements IItemStrategy{
 	public int getStat(game.BadGuys badguy) {
         switch (badguy) {
 	        case skeletons:
-	            return skeletons;
+	            return this.skeletons;
 	        case ghouls:
-	            return ghouls;
+	            return this.ghouls;
 	        case zombies:
-	            return zombies;
+	            return this.zombies;
 	        case evilKnight:
-	            return evilKnight;
+	            return this.evilKnight;
 	        case dragon:
-	            return dragon;
+	            return this.dragon;
 	        default:
 	            System.out.println("Invalid badguy!");
 	            return -1;

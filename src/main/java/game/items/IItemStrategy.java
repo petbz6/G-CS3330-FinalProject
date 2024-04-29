@@ -4,8 +4,7 @@ import game.*;
 import java.lang.*;
 
 public interface IItemStrategy {
-	int getDamage(game.BadGuys badguy);
-	ListOfItems printType();
+	String printType();
 	void toggleFavorite();
 	boolean isFavorited();
 	void upgradeItem();
@@ -13,5 +12,6 @@ public interface IItemStrategy {
 	void setHealth(int health);
 	int getMaxHealth();
 	void setMaxHealth(int maxHealth);
+	int getStat(BadGuys badguy);
 
 }
