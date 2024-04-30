@@ -18,9 +18,9 @@ public class Character {
     protected int intelligence;
     protected int wisdom;
     protected int charisma;
-    // Attributes for character leveling/experience 
     protected int level;
     protected int experience;
+    protected int difficultyChoice;
     protected int gems;
     protected int HP;
     protected int fistDamage = 2;
@@ -31,8 +31,9 @@ public class Character {
 
 
     //Create character instance
-    public Character(String name) {
+    public Character(String name, int difficultyChoice) {
         this.name = name;
+        this.difficultyChoice = difficultyChoice;
         rollStats();
         
         this.level = 1;
@@ -121,6 +122,10 @@ public class Character {
     private int getXPRequired() {
         return level * 50; 
     }
+    
+    public int getDifficultyChoice() {
+        return difficultyChoice;
+    }
 
     public boolean addWeapon(game.items.IItemStrategy weapon) {
     	this.weapon = weapon;
@@ -178,13 +183,13 @@ public class Character {
     	return this.unique.printType();
     }
 
-    public int getUnuiqueAmount(BadGuys badguy) {
+    public int getUniqueAmount(BadGuys badguy) {
     	return this.unique.getStat(badguy);
     }
     
     public void printInventory() {
         if (weapon != null) {
-            System.out.println("Weapon: " + weapon.printType());
+            System.out.println("\nWeapon: " + weapon.printType());
         }
         if (protection != null) {
             System.out.println("Protection: " + protection.printType());

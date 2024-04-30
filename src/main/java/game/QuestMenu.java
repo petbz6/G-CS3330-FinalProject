@@ -60,9 +60,9 @@ public class QuestMenu {
 
         if (questChoice == 6) {
             viewQuestStatus(scanner, character);
-            return; // Exit method as the status is displayed
+            return; 
         } else if (questChoice == 7) {
-            CharacterMenu.displayCharacterMenu(scanner, character); // Return to Character Menu
+            CharacterMenu.displayCharacterMenu(scanner, character); 
             return;
         }
 
@@ -77,30 +77,25 @@ public class QuestMenu {
                 QuestMethods quest1 = new QuestMethods();
                 if (quest1.quest1(scanner, character) == 1) {
                     questCompletedMenu(scanner, selectedQuest, character, questChoice);
-                    character.gainXP(10);
                 } else {
                     System.out.println("You failed the first quest!");
                 }
-                return; // Add return statement to exit the method after completing a quest
+                return; 
             case 2:
                 QuestMethods quest2 = new QuestMethods();
                 if (quest2.quest2(scanner, character) == 1) {
                     questCompletedMenu(scanner, selectedQuest, character, questChoice);
-                    character.gainXP(10);
                 } else {
                     System.out.println("You failed the first quest!");
                 }
-                return; // Add return statement to exit the method after completing a quest
+                return; 
             // Add cases for other quests
             case 3:
             	questCompletedMenu(scanner, selectedQuest, character, questChoice);
-                character.gainXP(10);
             case 4:
             	questCompletedMenu(scanner, selectedQuest, character, questChoice);
-                character.gainXP(10);
             case 5:
             	questCompletedMenu(scanner, selectedQuest, character, questChoice);
-                character.gainXP(10);
             default:
                 System.out.println("Invalid quest choice.");
         }
