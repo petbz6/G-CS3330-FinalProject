@@ -67,5 +67,22 @@ public class BattleAxe implements IItemStrategy{
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
-	
+	public void useWeapon() {
+		if (this.health == 0) {
+			//set each attack to 0
+			this.dragon = 0;
+			this.evilKnight = 0;
+			this.ghouls = 0;
+			this.skeletons = 0;
+			this.zombies = 0;
+			System.out.println("Your Battle Axe has ran out of health! Attacks will now have 0 damage.");
+		}
+		else {
+			this.health -= 1;
+			System.out.println("Item health after attack: " + this.getHealth());
+		}
+	}
+	public String getWeaponName() {
+		return "Battle Axe";
+	}
 }

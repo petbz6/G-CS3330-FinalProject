@@ -66,5 +66,23 @@ public class BootsOfSwiftness implements IItemStrategy {
 	public boolean isFavorited() {
 		return this.isFavorited;
 	}
+	public void useWeapon() {
+		if (this.health == 0) {
+			//set each attack to 0
+			this.dragon = 0;
+			this.evilKnight = 0;
+			this.ghouls = 0;
+			this.skeletons = 0;
+			this.zombies = 0;
+			System.out.println("Your Boots Of Swiftness has ran out of health! Attacks will now have 0 damage.");
+		}
+		else {
+			this.health -= 1;
+			System.out.println("Item health after attack: " + this.getHealth());
+		}
+	}
 	
+	public String getWeaponName() {
+		return "Boots of Swiftness";
+	}
 }

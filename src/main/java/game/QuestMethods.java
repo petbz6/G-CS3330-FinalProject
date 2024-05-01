@@ -93,8 +93,8 @@ public class QuestMethods {
 	        	else {
 	        		System.out.println("You see one last skeleton! You must destroy it!");
 	        	}
-	        	System.out.print("You have your (" + character.getWeapon() + "). What would you like to do?\n"
-						+ "1. Swing your (" + character.getWeapon() + ").\n"
+	        	System.out.print("You have your (" + character.getWeapon().getWeaponName() + "). What would you like to do?\n"
+						+ "1. Swing your (" + character.getWeapon().getWeaponName() + ").\n"
 						+ "2. Swing your fist.\n"
 						+ "3. Run!\n"
 						+ "Select your option: ");
@@ -114,6 +114,7 @@ public class QuestMethods {
 	        if(option == 1) {
 	        	System.out.println("You swing your (" + character.getWeapon() + ")!!");
 		        skeleton = skeleton - character.getDamage(BadGuys.skeletons);
+		        character.getWeapon().useWeapon();
 	        }
 	        if(option == 2) {
 	        	if(character.getStrength() < 10) {

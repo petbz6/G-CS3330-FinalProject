@@ -13,5 +13,7 @@ public interface IItemStrategy {
 	int getMaxHealth();
 	void setMaxHealth(int maxHealth);
 	int getStat(BadGuys badguy);
+	public void useWeapon();
+	public String getWeaponName();
 
 }

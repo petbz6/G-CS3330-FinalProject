@@ -139,8 +139,8 @@ public class Character {
     	return false;
     }
     
-    public String getWeapon() {
-    	return this.weapon.printType();
+    public IItemStrategy getWeapon() {
+    	return this.weapon;
     }
     
     public int getDamage(BadGuys badguy) {
