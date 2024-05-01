@@ -159,8 +159,8 @@ public class Character {
     	return false;
     }
     
-    public String getProtectant() {
-    	return this.protection.printType();
+    public IItemStrategy getProtectant() {
+    	return this.protection;
     }
 
     public int getProtectionAmount(BadGuys badguy) {
@@ -179,8 +179,8 @@ public class Character {
     	return false;
     }
     
-    public String getUnique() {
-    	return this.unique.printType();
+    public IITemStrategy getUnique() {
+    	return this.unique;
     }
 
     public int getUniqueAmount(BadGuys badguy) {

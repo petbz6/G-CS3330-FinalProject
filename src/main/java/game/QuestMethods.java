@@ -112,7 +112,7 @@ public class QuestMethods {
 	        
 	        
 	        if(option == 1) {
-	        	System.out.println("You swing your (" + character.getWeapon() + ")!!");
+	        	System.out.println("You swing your (" + character.getWeapon().getWeaponName() + ")!!");
 		        skeleton = skeleton - character.getDamage(BadGuys.skeletons);
 		        character.getWeapon().useWeapon();
 	        }
