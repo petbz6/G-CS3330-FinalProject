@@ -200,7 +200,11 @@ public class Character {
         if (weapon == null && protection == null && unique == null) {
             System.out.println("\nInventory Empty");
         }
+        
+        // Display gems
+        System.out.println("Gems: " + gems);
     }
+
 	public void repairItem(IItemStrategy item) {
 		if (item.getHealth() < item.getMaxHealth()) {
 			item.setHealth(item.getMaxHealth());
@@ -228,6 +232,10 @@ public class Character {
 	        System.out.println("Upgrade cancelled.");
 	    }
 	    scanner.close(); 
+	}
+	
+	public void addGems(int gems) {
+	       this.gems += gems;
 	}
 	
     public int getHP() {

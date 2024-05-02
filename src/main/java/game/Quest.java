@@ -7,14 +7,16 @@ public class Quest {
     protected String questName;
     protected List<String> equipmentReward;
     protected int xpReward;
+    protected int gemReward;
     protected boolean completed;
     protected String selectedReward;
     
     // Constructor
-    public Quest(String questName, List<String> equipmentReward, int xpReward) {
+    public Quest(String questName, List<String> equipmentReward, int xpReward, int gemReward) {
         this.questName = questName;
         this.equipmentReward = equipmentReward;
         this.xpReward = xpReward;
+        this.gemReward = gemReward;
         this.completed = false;
         this.selectedReward = "";
     }
@@ -64,6 +66,16 @@ public class Quest {
 	public void setSelectedReward(String selectedReward) {
 		this.selectedReward = selectedReward;
 	}
+
+	public int getGemReward() {
+		return gemReward;
+	}
+
+	public void setGemReward(int gemReward) {
+		this.gemReward = gemReward;
+	}
+	
+	
     
     
 	

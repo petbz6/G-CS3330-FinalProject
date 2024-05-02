@@ -129,6 +129,7 @@ public class CharacterSelector {
         System.out.println("Name: " + character.name);
         System.out.println("Class: " + character.characterClass);
         System.out.println("Level: " + character.level);
+        System.out.println("Gems: " + character.gems); 
         System.out.println("Difficulty: " + difficulty);
         System.out.println("\nStats: ");
         System.out.println("Strength: " + character.getStrength());

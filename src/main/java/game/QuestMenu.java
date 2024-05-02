@@ -13,11 +13,11 @@ public class QuestMenu {
     // List of available quests, each with their own rewards and experience points
     private static List<Quest> questLog() {
         List<Quest> quests = new ArrayList<>();
-        quests.add(new Quest("Defeat the Bandits", List.of("Short Sword", "Battle Axe", "Warhammer"), 50));
-        quests.add(new Quest("Defend the Village", List.of("Broad Shield", "Helm of Justice", "Gloves of Salvation"), 60));
-        quests.add(new Quest("Save the King", List.of("Boots of Swiftness", "Ring of Protection", "Cloak of Invisibility"), 75));
-        quests.add(new Quest("Defeat the Evil Knight", List.of("Chestplate of Fortitude", "Cowl of Shadows", "Darkblade"), 100));
-        quests.add(new Quest("Slay the Dragon", List.of("Amulet of Fire", "Inferno Staff", "Greatsword of Destruction"), 200));
+        quests.add(new Quest("Defeat the Bandits", List.of("Short Sword", "Battle Axe", "Warhammer"), 50, 50));
+        quests.add(new Quest("Defend the Village", List.of("Broad Shield", "Helm of Justice", "Gloves of Salvation"), 60, 100));
+        quests.add(new Quest("Save the King", List.of("Boots of Swiftness", "Ring of Protection", "Cloak of Invisibility"), 75, 150));
+        quests.add(new Quest("Defeat the Evil Knight", List.of("Chestplate of Fortitude", "Cowl of Shadows", "Darkblade"), 100, 200));
+        quests.add(new Quest("Slay the Dragon", List.of("Amulet of Fire", "Inferno Staff", "Greatsword of Destruction"), 200, 250));
 
         return quests;
     }
@@ -110,6 +110,7 @@ public class QuestMenu {
         Quest currentQuest = quests.get(questChoice - 1);
         currentQuest.setCompleted(true);
         handleXpReward(currentQuest, character);
+        handleGemsReward(selectedQuest, character);
 
         System.out.println("\nThe following rewards are available:");
         List<String> rewards = selectedQuest.getRewards();
@@ -118,7 +119,6 @@ public class QuestMenu {
         for (int i = 0; i < rewards.size(); i++) {
             System.out.println((i + 1) + ". " + rewards.get(i));
         }
-
 
         int rewardChoice;
         // Prompt for player to choose reward
@@ -137,20 +137,40 @@ public class QuestMenu {
             if (rewardChoice < 1 || rewardChoice > rewards.size()) {
                 System.out.println("Invalid input. Please enter a number between 1 and " + rewards.size() + ".");
             }
-
         } while (rewardChoice < 1 || rewardChoice > rewards.size());
 
         // Handle the chosen reward 
         if (rewardChoice >= 1 && rewardChoice <= rewards.size()) {
-        	String selectedReward = rewards.get(rewardChoice - 1);
+            String selectedReward = rewards.get(rewardChoice - 1);
             selectedQuest.setSelectedReward(selectedReward); 
             handleEquipmentReward(scanner, selectedQuest, rewardChoice, character);
-
         }
 
         // After displaying the reward choice, display the quest menu
         displayQuests(scanner, character);
     }
+
+    // Handles XP rewards from quests
+    private static void handleXpReward(Quest selectedQuest, Character character) {
+        // Gets experience reward associated with the quest
+        int xpReward = selectedQuest.getXpReward();
+        // Displays how much experience gained
+        System.out.println("You gained " + xpReward + " experience points.");
+        // Adds the experience points to the character level
+        character.gainXP(xpReward);
+        System.out.println("Current Level: " + character.getLevel());
+    }
+
+    // Handles gems reward from quests
+    private static void handleGemsReward(Quest selectedQuest, Character character) {
+        // Get gems reward associated with the quest
+        int gemsReward = selectedQuest.getGemReward();
+        // Display how many gems received
+        System.out.println("You received " + gemsReward + " gems.");
+        // Add the gems reward to the character's gem count
+        character.addGems(gemsReward);
+    }
+
     
     // Menu option that displays whether or not a quest has been completed
     // Also displays the reward chosen by the player, the experience gained, and some dialogue pertaining to the outcome of the quest
@@ -172,6 +192,7 @@ public class QuestMenu {
                 System.out.println("Outcome: " + questOutcome);
                 System.out.println(rewardChoice);
                 System.out.println("Experience Gained: " + completedQuestXP);
+                System.out.println("Received Gems: " + character.gems);
             }
             System.out.println();
         }
@@ -180,13 +201,13 @@ public class QuestMenu {
         displayQuests(scanner, character);
     }
 
-	//Part of Quest Status
+	// Part of Quest Status
     // Displays a message detailing the outcome of the quest
 	private static String questOutcomeMessage(String questName) {
 	    switch (questName) {
 	        case "Defeat the Bandits":
 	            return "\nYou defeated the bandits. Although no one was present to witness your"
-	            		+ "\ndeeds, you gained a great sense of confidence in your abilities";
+	            		+ "\ndeeds, you gained a great sense of confidence in your abilities.";
 	        case "Defend the Village":
 	            return "\nYou successfully defended the village against the skeletal invaders. "
 	            		+ "\nAll of the citizens gathered to sing praises of your bravery and"
@@ -236,14 +257,5 @@ public class QuestMenu {
         QuestMenu.displayQuests(scanner, character);
     }
     
-    // Handles the XP reward for the player and quest
-    public static void handleXpReward(Quest selectedQuest, Character character) {
-        // Gets experience reward associated with the quest
-        int xpReward = selectedQuest.getXpReward();
-        // Displays how much experience gained
-        System.out.println("You gained " + xpReward + " experience points.");
-        // Adds the experience points to the character level
-        character.gainXP(xpReward);
-        System.out.println("Current Level: " + character.getLevel());
-    }
+   
 }
