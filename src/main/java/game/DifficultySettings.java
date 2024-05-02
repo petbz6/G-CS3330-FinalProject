@@ -6,7 +6,7 @@ import java.util.Scanner;
 // Normal = No stat change, Medium = All stats decrease by 2, Hard = All stats decrease by 4
 public class DifficultySettings {
     public static int chooseDifficultyLevel(Scanner scanner) {
-        System.out.println("\nSelect quest difficulty:");
+        System.out.println("\nSelect a Difficulty Level:");
         System.out.println("1. Normal (No Changes to Stats)");
         System.out.println("2. Medium (-2 All Stats)");
         System.out.println("3. Hard (-4 All Stats)");

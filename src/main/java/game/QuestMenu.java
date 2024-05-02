@@ -45,7 +45,7 @@ public class QuestMenu {
 
         int questChoice;
         do {
-            System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest status, or 7 to return to the character menu): ");
+            System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest questStatus, or 7 to return to the character menu): ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next();
@@ -101,18 +101,6 @@ public class QuestMenu {
         }
     }
 
-    // Menu option that displays whether or not a quest has been completed
-    public static void viewQuestStatus(Scanner scanner, Character character) {
-        List<Quest> quests = QuestMenu.quests;
-
-        System.out.println("\nQuest Status:");
-        for (Quest quest : quests) {
-            System.out.println(quest.getQuestName() + " - " + (quest.isCompleted() ? "Completed" : "Incomplete"));
-        }
-        // After displaying quest status, go back to the quest menu
-        displayQuests(scanner, character);
-    }
-
     // After combat (if player successfully wins combat), they will have completed the quest
     // The player will be prompted to select from the available rewards
     public static void questCompletedMenu(Scanner scanner, Quest selectedQuest, Character character, int questChoice) {
@@ -154,6 +142,8 @@ public class QuestMenu {
 
         // Handle the chosen reward 
         if (rewardChoice >= 1 && rewardChoice <= rewards.size()) {
+        	String selectedReward = rewards.get(rewardChoice - 1);
+            selectedQuest.setSelectedReward(selectedReward); 
             handleEquipmentReward(scanner, selectedQuest, rewardChoice, character);
 
         }
@@ -161,6 +151,56 @@ public class QuestMenu {
         // After displaying the reward choice, display the quest menu
         displayQuests(scanner, character);
     }
+    
+    // Menu option that displays whether or not a quest has been completed
+    // Also displays the reward chosen by the player, the experience gained, and some dialogue pertaining to the outcome of the quest
+    public static void viewQuestStatus(Scanner scanner, Character character) {
+        List<Quest> quests = QuestMenu.quests;
+
+        System.out.println("\nQuest Status:");
+        for (Quest quest : quests) {
+            String questStatus = quest.isCompleted() ? "Completed" : "Incomplete";
+            String questOutcome = quest.isCompleted() ? questOutcomeMessage(quest.getQuestName()) : "";
+            String rewardChoice = quest.isCompleted() && !quest.getSelectedReward().isEmpty() ?
+                    "Reward Received: " + quest.getSelectedReward() : "";
+            int completedQuestXP = quest.isCompleted() ? quest.getXpReward() : 0;
+
+            System.out.println("Quest Name: " + quest.getQuestName()); // Display quest name
+
+            System.out.println("Status: " + questStatus);
+            if (quest.isCompleted()) {
+                System.out.println("Outcome: " + questOutcome);
+                System.out.println(rewardChoice);
+                System.out.println("Experience Gained: " + completedQuestXP);
+            }
+            System.out.println();
+        }
+
+        // After displaying quest status, go back to the quest menu
+        displayQuests(scanner, character);
+    }
+
+	//Part of Quest Status
+    // Displays a message detailing the outcome of the quest
+	private static String questOutcomeMessage(String questName) {
+	    switch (questName) {
+	        case "Defeat the Bandits":
+	            return "\nYou defeated the bandits. Although no one was present to witness your"
+	            		+ "\ndeeds, you gained a great sense of confidence in your abilities";
+	        case "Defend the Village":
+	            return "\nYou successfully defended the village against the skeletal invaders. "
+	            		+ "\nAll of the citizens gathered to sing praises of your bravery and"
+	            		+ "\nthe mayor himself rewarded you for your efforts.";
+	        case "Save the King":
+	        	return "(INSERT)";
+	        case "Defeat the Evil Knight":
+	        	return "(INSERT)";
+	        case "Slay the Dragon":
+	        	return "INSERT";
+	        default:
+	            return "";
+	    }
+	}
 
     // Handles the reward selection by the player for each quest
     public static void handleEquipmentReward(Scanner scanner, Quest selectedQuest, int rewardChoice, Character character) {

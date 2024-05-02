@@ -179,7 +179,7 @@ public class Character {
     	return false;
     }
     
-    public IITemStrategy getUnique() {
+    public IItemStrategy getUnique() {
     	return this.unique;
     }
 

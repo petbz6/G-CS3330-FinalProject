@@ -8,6 +8,7 @@ public class Quest {
     protected List<String> equipmentReward;
     protected int xpReward;
     protected boolean completed;
+    protected String selectedReward;
     
     // Constructor
     public Quest(String questName, List<String> equipmentReward, int xpReward) {
@@ -15,6 +16,7 @@ public class Quest {
         this.equipmentReward = equipmentReward;
         this.xpReward = xpReward;
         this.completed = false;
+        this.selectedReward = "";
     }
 
 	public List<String> getRewards() {
@@ -54,5 +56,15 @@ public class Quest {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+	public String getSelectedReward() {
+		return selectedReward;
+	}
+
+	public void setSelectedReward(String selectedReward) {
+		this.selectedReward = selectedReward;
+	}
+    
+    
 	
 }
