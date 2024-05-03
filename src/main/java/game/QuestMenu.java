@@ -29,13 +29,7 @@ public class QuestMenu {
         System.out.println("\nAvailable Quests:");
         for (int i = 0; i < quests.size(); i++) {
             Quest quest = quests.get(i);
-            // Quest Progression
-            // Player must complete quests in order. If the previous quest is not completed, the next one is set to locked
-            if (quest.isCompleted() || i == 0 || quests.get(i - 1).isCompleted()) {
-                System.out.println((i + 1) + ". " + quest.getQuestName());
-            } else {
-                System.out.println((i + 1) + ". " + quest.getQuestName() + " 🔒");
-            }
+            displayQuestProgression(i, quest, quests);
         }
 
         // Option 6: View Quest Status
@@ -110,7 +104,7 @@ public class QuestMenu {
         Quest currentQuest = quests.get(questChoice - 1);
         currentQuest.setCompleted(true);
         handleXpReward(currentQuest, character);
-        handleGemsReward(selectedQuest, character);
+        handleGemsReward(currentQuest, character);
 
         System.out.println("\nThe following rewards are available:");
         List<String> rewards = selectedQuest.getRewards();
@@ -149,6 +143,40 @@ public class QuestMenu {
         // After displaying the reward choice, display the quest menu
         displayQuests(scanner, character);
     }
+    
+    // Handles the reward selection by the player for each quest
+    public static void handleEquipmentReward(Scanner scanner, Quest selectedQuest, int rewardChoice, Character character) {
+        List<String> rewards = selectedQuest.getRewards();
+        String selectedReward = rewards.get(rewardChoice - 1);
+        System.out.println("You have chosen: " + selectedReward);
+
+        String questName = selectedQuest.getQuestName();
+        AbstractQuestReward questReward;
+
+        switch (questName) {
+            case "Defeat the Bandits":
+                questReward = new Quest1Reward();
+                break;
+            case "Defend the Village":
+            	questReward = new Quest2Reward();
+            	break;
+            case "Save the King":
+            	questReward = new Quest3Reward();
+            	break;
+            case "Defeat the Evil Knight":
+            	questReward = new Quest4Reward();
+            	break;
+            case "Slay the Dragon":
+            	questReward = new Quest5Reward();
+            	break;
+            default:
+                System.out.println("Invalid quest choice.");
+                return;
+        }
+
+        questReward.applyReward(rewardChoice, character);
+        QuestMenu.displayQuests(scanner, character);
+    }
 
     // Handles XP rewards from quests
     private static void handleXpReward(Quest selectedQuest, Character character) {
@@ -184,15 +212,16 @@ public class QuestMenu {
             String rewardChoice = quest.isCompleted() && !quest.getSelectedReward().isEmpty() ?
                     "Reward Received: " + quest.getSelectedReward() : "";
             int completedQuestXP = quest.isCompleted() ? quest.getXpReward() : 0;
+            int gemsReward = quest.isCompleted() ? quest.getGemReward() : 0; 
 
-            System.out.println("Quest Name: " + quest.getQuestName()); // Display quest name
+            System.out.println("Quest Name: " + quest.getQuestName());
 
             System.out.println("Status: " + questStatus);
             if (quest.isCompleted()) {
                 System.out.println("Outcome: " + questOutcome);
                 System.out.println(rewardChoice);
                 System.out.println("Experience Gained: " + completedQuestXP);
-                System.out.println("Received Gems: " + character.gems);
+                System.out.println("Received Gems: " + gemsReward); 
             }
             System.out.println();
         }
@@ -200,6 +229,7 @@ public class QuestMenu {
         // After displaying quest status, go back to the quest menu
         displayQuests(scanner, character);
     }
+
 
 	// Part of Quest Status
     // Displays a message detailing the outcome of the quest
@@ -222,40 +252,14 @@ public class QuestMenu {
 	            return "";
 	    }
 	}
-
-    // Handles the reward selection by the player for each quest
-    public static void handleEquipmentReward(Scanner scanner, Quest selectedQuest, int rewardChoice, Character character) {
-        List<String> rewards = selectedQuest.getRewards();
-        String selectedReward = rewards.get(rewardChoice - 1);
-        System.out.println("You have chosen: " + selectedReward);
-
-        String questName = selectedQuest.getQuestName();
-        AbstractQuestReward questReward;
-
-        switch (questName) {
-            case "Defeat the Bandits":
-                questReward = new Quest1Reward();
-                break;
-            case "Defend the Village":
-            	questReward = new Quest2Reward();
-            	break;
-            case "Save the King":
-            	questReward = new Quest3Reward();
-            	break;
-            case "Defeat the Evil Knight":
-            	questReward = new Quest4Reward();
-            	break;
-            case "Slay the Dragon":
-            	questReward = new Quest5Reward();
-            	break;
-            default:
-                System.out.println("Invalid quest choice.");
-                return;
-        }
-
-        questReward.applyReward(rewardChoice, character);
-        QuestMenu.displayQuests(scanner, character);
-    }
-    
-   
+	
+	// Quest Progression
+	private static void displayQuestProgression(int index, Quest quest, List<Quest> quests) {
+	    // Player must complete quests in order. If the previous quest is not completed, the next one is set to locked
+	    if (quest.isCompleted() || index == 0 || quests.get(index - 1).isCompleted()) {
+	        System.out.println((index + 1) + ". " + quest.getQuestName());
+	    } else {
+	        System.out.println((index + 1) + ". " + quest.getQuestName() + " 🔒");
+	    }
+	}
 }
