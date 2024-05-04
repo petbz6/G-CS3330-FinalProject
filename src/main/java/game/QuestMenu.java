@@ -85,11 +85,29 @@ public class QuestMenu {
                 return; 
             // Add cases for other quests
             case 3:
-            	questCompletedMenu(scanner, selectedQuest, character, questChoice);
+            	QuestMethods quest3 = new QuestMethods();
+                if (quest3.quest3(scanner, character) == 1) {
+                    questCompletedMenu(scanner, selectedQuest, character, questChoice);
+                } else {
+                    System.out.println("You failed the first quest!");
+                }
+                return; 
             case 4:
-            	questCompletedMenu(scanner, selectedQuest, character, questChoice);
+            	QuestMethods quest4 = new QuestMethods();
+                if (quest4.quest4(scanner, character) == 1) {
+                    questCompletedMenu(scanner, selectedQuest, character, questChoice);
+                } else {
+                    System.out.println("You failed the first quest!");
+                }
+                return; 
             case 5:
-            	questCompletedMenu(scanner, selectedQuest, character, questChoice);
+            	QuestMethods quest5 = new QuestMethods();
+                if (quest5.quest5(scanner, character) == 1) {
+                    questCompletedMenu(scanner, selectedQuest, character, questChoice);
+                } else {
+                    System.out.println("You failed the first quest!");
+                }
+                return; 
             default:
                 System.out.println("Invalid quest choice.");
         }

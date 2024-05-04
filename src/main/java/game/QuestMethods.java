@@ -3,8 +3,7 @@ package game;
 import java.util.Scanner;
 
 public class QuestMethods {
-	
-	public int quest1(Scanner scanner, Character character) {
+	public int quest1(Scanner scanner, Character character) { // Defeat the bandits
 		System.out.println("You enter the room");
 		if(character.characterClass == "Fighter") {
 			System.out.println("You are a fighter in a dark room.");
@@ -60,7 +59,7 @@ public class QuestMethods {
 		return 1;
 	}
 	
-	public int quest2(Scanner scanner, Character character) {
+	public int quest2(Scanner scanner, Character character) { // Defend the Village
 		System.out.println("You enter the room");
 		if(character.characterClass == "Fighter") {
 			System.out.println("You are a fighter in a village.");
@@ -144,5 +143,95 @@ public class QuestMethods {
 	        }
 		}
 		return 0;
+	}
+	
+	//Quest 1 Items: ShortSword, BattleAxe, Warhammer
+	//Quest 2 Items: BroadShield, HelmOfJustice, GlovesOfSalvation
+	public int quest3(Scanner scanner, Character character) { // Save the king
+		System.out.println("Quest 3");
+		System.out.println("You have put the bandits in their place and destroyed the skeletons! That was a lot of work!\n"
+				+ "You are feeling super tired. What will you decide to do?");
+		System.out.print("You have your (" + character.getWeapon().getWeaponName() + "). What would you like to do?\n"
+				+ "1. Take a rest day.\n"
+				+ "2. Buy some coffee.\n"
+				+ "3. Retire\n"
+				+ "Select your option: ");
+        int option = -1;
+		do {
+		while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a number between 1 and 3.");
+            scanner.next();
+            option = scanner.nextInt();
+        }
+        } while (option < 1 || option > 3);
+        
+		int option2 = -1;
+		
+        if (option == 1) {
+        	System.out.println("You decide to take a rest day. First you have to look for a hotel.\n"
+        			+ "Which hotel would you like to stay at?\n"
+        			+ "1. Expensive hotel (100 gems)\n"
+        			+ "2. Normal hotel (50 gems)"
+        			+ "3. Cheap hotel (25 gems)");
+        	option2 = -1;
+    		do {
+    		while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 1 and 3.");
+                scanner.next();
+                option2 = scanner.nextInt();
+            }
+            } while (option2 < 1 || option2 > 3);
+    		
+    		if(option2 == 1) {
+    			
+    		}
+    		
+    		if(option2 == 1) {
+    			
+    		}
+
+			if(option2 == 1) {
+	
+			}
+        }
+        
+        if (option == 2) {
+        	System.out.println("You decide to take a buy coffe. First you have to choose a coffe shop.\n"
+        			+ "Which coffee shop would you like to go to?\n"
+        			+ "1. Expensive coffee shop (50 gems)\n"
+        			+ "2. Normal coffe shop (25 gems)"
+        			+ "3. Cheap coffe shop (20 gems)");
+        	option = -1;
+    		do {
+    		while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 1 and 3.");
+                scanner.next();
+                option = scanner.nextInt();
+            }
+            } while (option < 1 || option > 3);
+    		
+    		
+        }
+		
+        
+        if (option == 3)
+        {
+        	System.out.println("You decide to retire. This leave you with little to no money to live off of for the rest of your life.\n"
+        			+ "You only live to 53 because you didn't save enough gems to support your luxurious lifestyle.\n"
+        			+ "You fail the quest.");
+        	return 0;
+        }
+		
+		return 1;
+	}
+	
+	public int quest4(Scanner scanner, Character character) { // Defeat the Evil Knight
+		System.out.println("Quest 4");
+		return 1;
+	}
+	
+	public int quest5(Scanner scanner, Character character) { // Slay the Dragon
+		System.out.println("Quest 5");
+		return 1;
 	}
 }
