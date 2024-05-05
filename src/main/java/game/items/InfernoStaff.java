@@ -1,5 +1,7 @@
 package game.items;
 
+import java.util.Random;
+
 import game.*;
 
 public class InfernoStaff implements IItemStrategy{
@@ -12,6 +14,25 @@ public class InfernoStaff implements IItemStrategy{
 	private int health = 20;
 	private int maxHealth = 20;
 	private game.ListOfItems type = game.ListOfItems.InfernoStaff;
+	private Rarity rarity;
+	
+    public InfernoStaff() {
+        this.rarity = getRandomRarity(); 
+    }
+
+    private Rarity getRandomRarity() {
+        Random random = new Random();
+
+        Rarity[] skewedRarities = {
+            Rarity.COMMON, Rarity.COMMON, Rarity.COMMON, Rarity.COMMON, Rarity.COMMON,
+            Rarity.UNCOMMON, Rarity.UNCOMMON, Rarity.UNCOMMON,
+            Rarity.RARE, Rarity.RARE,
+            Rarity.EPIC,
+            Rarity.LEGENDARY
+        };
+        return skewedRarities[random.nextInt(skewedRarities.length)];
+    }
+	
 	
 	public String printType() {
 		return type.name();
@@ -84,6 +105,14 @@ public class InfernoStaff implements IItemStrategy{
 	}
 	public String getWeaponName() {
 		return "Inferno Staff";
+	}
+
+	public Rarity getRarity() {
+		return rarity;
+	}
+
+	public void setRarity(Rarity rarity) {
+		this.rarity = rarity;
 	}
 	
 }

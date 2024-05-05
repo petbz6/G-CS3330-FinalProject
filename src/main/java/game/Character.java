@@ -126,6 +126,8 @@ public class Character {
     public int getDifficultyChoice() {
         return difficultyChoice;
     }
+    
+
 
     public boolean addWeapon(game.items.IItemStrategy weapon) {
     	this.weapon = weapon;

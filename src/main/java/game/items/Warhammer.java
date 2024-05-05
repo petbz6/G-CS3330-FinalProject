@@ -1,5 +1,7 @@
 package game.items;
 
+import java.util.Random;
+
 import game.*;
 
 public class Warhammer implements IItemStrategy {
@@ -12,6 +14,24 @@ public class Warhammer implements IItemStrategy {
 	private int health = 20;
 	private int maxHealth = 20;
 	private game.ListOfItems type = game.ListOfItems.Warhammer;
+	private Rarity rarity;
+	
+    public Warhammer() {
+        this.rarity = getRandomRarity(); 
+    }
+
+    private Rarity getRandomRarity() {
+        Random random = new Random();
+
+        Rarity[] skewedRarities = {
+            Rarity.COMMON, Rarity.COMMON, Rarity.COMMON, Rarity.COMMON, Rarity.COMMON,
+            Rarity.UNCOMMON, Rarity.UNCOMMON, Rarity.UNCOMMON,
+            Rarity.RARE, Rarity.RARE,
+            Rarity.EPIC,
+            Rarity.LEGENDARY
+        };
+        return skewedRarities[random.nextInt(skewedRarities.length)];
+    }
 	
 	public String printType() {
 		return type.name();
@@ -83,6 +103,14 @@ public class Warhammer implements IItemStrategy {
 	}
 	public String getWeaponName() {
 		return "Warhammer";
+	}
+
+	public Rarity getRarity() {
+		return rarity;
+	}
+
+	public void setRarity(Rarity rarity) {
+		this.rarity = rarity;
 	}
 }
 

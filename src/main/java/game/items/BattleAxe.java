@@ -12,6 +12,7 @@ public class BattleAxe implements IItemStrategy{
 	private int maxHealth = 20;
 	private game.ListOfItems type = game.ListOfItems.BattleAxe;
 	private boolean isFavorited = false;
+	private Rarity rarity;
 	
 	public String printType() {
 		return type.name();
@@ -84,5 +85,13 @@ public class BattleAxe implements IItemStrategy{
 	}
 	public String getWeaponName() {
 		return "Battle Axe";
+	}
+
+	public Rarity getRarity() {
+		return rarity;
+	}
+
+	public void setRarity(Rarity rarity) {
+		this.rarity = rarity;
 	}
 }

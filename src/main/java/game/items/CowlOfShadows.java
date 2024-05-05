@@ -12,6 +12,7 @@ public class CowlOfShadows implements IItemStrategy {
 	private int health = 20;
 	private int maxHealth = 20;
 	private game.ListOfItems type = game.ListOfItems.CowlOfShadows;
+	private Rarity rarity;
 	
 	public String printType() {
 		return type.name();
@@ -84,6 +85,14 @@ public class CowlOfShadows implements IItemStrategy {
 	}
 	public String getWeaponName() {
 		return "Cowl of Shadows";
+	}
+
+	public Rarity getRarity() {
+		return rarity;
+	}
+
+	public void setRarity(Rarity rarity) {
+		this.rarity = rarity;
 	}
 	
 }

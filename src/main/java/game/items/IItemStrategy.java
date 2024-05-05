@@ -15,5 +15,7 @@ public interface IItemStrategy {
 	int getStat(BadGuys badguy);
 	public void useWeapon();
 	public String getWeaponName();
+	void setRarity(Rarity rarity);
+	Rarity getRarity();
 
 }

@@ -12,6 +12,7 @@ public class AmuletOfFire implements IItemStrategy{
 	private int health = 20;
 	private int maxHealth = 20;
 	private game.ListOfItems type = game.ListOfItems.AmuletOfFire;
+	private Rarity rarity;
 	
 	public String printType() {
 		return type.name();
@@ -84,5 +85,13 @@ public class AmuletOfFire implements IItemStrategy{
 	}
 	public String getWeaponName() {
 		return "Amulet of Fire";
+	}
+
+	public Rarity getRarity() {
+		return rarity;
+	}
+
+	public void setRarity(Rarity rarity) {
+		this.rarity = rarity;
 	}
 }
