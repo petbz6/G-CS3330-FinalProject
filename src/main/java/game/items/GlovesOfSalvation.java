@@ -18,6 +18,32 @@ public class GlovesOfSalvation implements IItemStrategy {
 	
     public GlovesOfSalvation() {
         this.rarity = getRandomRarity(); 
+        if (this.rarity == Rarity.UNCOMMON) {
+        	upgradeItem();
+        	// item stats boosted by 5 points
+     
+        }
+        if (this.rarity == Rarity.RARE) {
+        	upgradeItem();
+        	upgradeItem();
+        	
+        	//item stats boosted by 10 points
+        }
+        
+        if (this.rarity == Rarity.EPIC) {
+        	upgradeItem();
+        	upgradeItem();
+        	upgradeItem();
+        	// item stats boosted by 15 points
+        }
+        if (this.rarity == Rarity.LEGENDARY) {
+        	upgradeItem();
+        	upgradeItem();
+        	upgradeItem();
+        	upgradeItem();
+        	
+        	// item stats boosted by 20 points 
+        }
     }
 
     private Rarity getRandomRarity() {
@@ -105,7 +131,7 @@ public class GlovesOfSalvation implements IItemStrategy {
 	}
 	
 	public String getWeaponName() {
-		return "Gloves of Salivation";
+		return "Gloves of Salvation";
 	}
 
 	public Rarity getRarity() {
