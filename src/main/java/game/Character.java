@@ -41,7 +41,7 @@ public class Character {
     }
 
     //Create method to roll for stats in a classic DnD fashion (roll a six sided die 4 times and drop the lowest roll)
-    private void rollStats() {
+    public void rollStats() {
         Random random = new Random();
         int[] rolls = new int[6]; //Array to store the total rolls
 
@@ -71,11 +71,11 @@ public class Character {
         charisma = rolls[5];
     }
 
-	//Getter methods for stats
-	public String getName() {
+	//Getter methods for character stats
+    public String getName() {
 		return name;
 	}
-	
+    
 	public int getStrength() {
 		return strength;
 	}
@@ -108,6 +108,31 @@ public class Character {
 		return experience;
 	}
 	
+	//Setter methods for character stats
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public void setDexterity(int dexterity) {
+		this.dexterity = dexterity;
+	}
+
+	public void setConstitution(int constitution) {
+		this.constitution = constitution;
+	}
+
+	public void setIntelligence(int intelligence) {
+		this.intelligence = intelligence;
+	}
+
+	public void setWisdom(int wisdom) {
+		this.wisdom = wisdom;
+	}
+
+	public void setCharisma(int charisma) {
+		this.charisma = charisma;
+	}
+
 	// Increases character experience and checks for level up condition
 	public void gainXP(int xpReward) {
 		experience += xpReward;
@@ -130,8 +155,6 @@ public class Character {
     public int getDifficultyChoice() {
         return difficultyChoice;
     }
-    
-
 
     public boolean addWeapon(game.items.IItemStrategy weapon) {
     	this.weapon = weapon;
