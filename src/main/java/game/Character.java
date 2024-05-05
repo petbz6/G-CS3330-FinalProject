@@ -72,10 +72,14 @@ public class Character {
     }
 
 	//Getter methods for character stats
-    public String getName() {
+    	public String getName() {
 		return name;
 	}
     
+	public String getCharacterClass() {
+		return characterClass;
+	}
+
 	public int getStrength() {
 		return strength;
 	}
@@ -109,6 +113,14 @@ public class Character {
 	}
 	
 	//Setter methods for character stats
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setCharacterClass(String characterClass) {
+		this.characterClass = characterClass;
+	}
+
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
