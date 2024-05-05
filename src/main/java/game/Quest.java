@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Quest {
     protected String questName;
-    protected List<String> equipmentReward;
+    protected List<String> itemReward;
     protected int xpReward;
     protected int gemReward;
     protected boolean completed;
     protected String selectedReward;
     
     // Constructor
-    public Quest(String questName, List<String> equipmentReward, int xpReward, int gemReward) {
+    public Quest(String questName, List<String> itemReward, int xpReward, int gemReward) {
         this.questName = questName;
-        this.equipmentReward = equipmentReward;
+        this.itemReward = itemReward;
         this.xpReward = xpReward;
         this.gemReward = gemReward;
         this.completed = false;
@@ -22,7 +22,7 @@ public class Quest {
     }
 
 	public List<String> getRewards() {
-        return equipmentReward;
+        return itemReward;
     }
 
 	public String getQuestName() {
@@ -33,12 +33,12 @@ public class Quest {
 		this.questName = questName;
 	}
 
-	public List<String> getEquipmentReward() {
-		return equipmentReward;
+	public List<String> getItemReward() {
+		return itemReward;
 	}
 
-	public void setEquipmentReward(List<String> equipmentReward) {
-		this.equipmentReward = equipmentReward;
+	public void setItemReward(List<String> itemReward) {
+		this.itemReward = itemReward;
 	}
 
 	public int getXpReward() {

@@ -1,9 +1,9 @@
-package game.questRewards;
+package game.questItemRewards;
 
 import game.Character;
 import game.items.*;
 
-public class Quest4Reward extends AbstractQuestReward {
+public class Quest4ItemReward extends AbstractQuestItemReward {
     @Override
     public void applyReward(int rewardChoice, Character character) {
     	switch (rewardChoice) {
