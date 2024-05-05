@@ -72,6 +72,10 @@ public class Character {
     }
 
 	//Getter methods for stats
+	public String getName() {
+		return name;
+	}
+	
 	public int getStrength() {
 		return strength;
 	}
