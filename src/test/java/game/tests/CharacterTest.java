@@ -40,12 +40,7 @@ public class CharacterTest {
 	void tearDown() throws Exception {
 	}
 	
-	//Test getDifficultyChoice method
-	@Test
-	public void testGetName() {
-		assertEquals("Test", character.getName());
-	}
-	
+	//Test rollStats method
 	@Test
 	public void testRollStats() {
         character.rollStats();
@@ -61,7 +56,6 @@ public class CharacterTest {
 	//Test xp related methods
 	@Test
     public void testGainXP() {
-        Character character = new Character("Test", 1);
         character.gainXP(100);
         assertEquals(100, character.getExperience());
         character.gainXP(50);
@@ -76,6 +70,74 @@ public class CharacterTest {
 	@Test
 	public void testGetDifficultyChoice() {
 		assertEquals(1, character.getDifficultyChoice());
+	}
+	
+	//Test getName method
+	@Test
+	public void testGetName() {
+		assertEquals("Test", character.getName());
+	}
+	
+	//Test getName method
+	@Test
+	public void testGetCharacterClass() {
+		assertEquals(null, character.getCharacterClass());
+	}
+	
+	//Test setName method
+	@Test
+	void testSetCharacterClass() {
+		character.setCharacterClass("Fighter");
+		assertEquals("Fighter", character.getCharacterClass());
+	}
+	
+	//Test setName method
+	@Test
+	void testSetName() {
+		character.setName("Bob");
+		assertEquals("Bob", character.getName());
+	}
+	
+	//Test setStrength method
+	@Test
+	void testSetStrength() {
+		character.setStrength(15);
+		assertEquals(15, character.getStrength());
+	}
+	
+	//Test setDexterity method
+	@Test
+	void testSetDexterity() {
+		character.setDexterity(15);
+		assertEquals(15, character.getDexterity());
+	}
+	
+	//Test setConstitution method
+	@Test
+	void testSetConstitution() {
+		character.setConstitution(15);
+		assertEquals(15, character.getConstitution());
+	}
+	
+	//Test setIntelligence method
+	@Test
+	void testSetIntelligence() {
+		character.setIntelligence(15);
+		assertEquals(15, character.getIntelligence());
+	}
+	
+	//Test setWisdom method
+	@Test
+	void testSetWisdom() {
+		character.setWisdom(15);
+		assertEquals(15, character.getWisdom());
+	}
+	
+	//Test setCharisma method
+	@Test
+	void testSetCharisma() {
+		character.setCharisma(15);
+		assertEquals(15, character.getCharisma());
 	}
 	
 }
