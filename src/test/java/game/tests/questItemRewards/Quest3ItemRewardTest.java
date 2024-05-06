@@ -1,4 +1,4 @@
-package game.tests.questRewards;
+package game.tests.questItemRewards;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -10,9 +10,9 @@ import game.items.*;
 import game.questItemRewards.AbstractQuestItemReward;
 import game.questItemRewards.Quest3ItemReward;
 
-public class Quest3RewardTest {
+public class Quest3ItemRewardTest {
 	@Test
-    public void testQuest2ItemReward() {
+    public void testQuest3ItemReward() {
         Character character = new Character("TestCharacter", 1);
         AbstractQuestItemReward reward = new Quest3ItemReward();
         
