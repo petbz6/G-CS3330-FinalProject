@@ -279,6 +279,14 @@ public class Character {
 	       this.gems += gems;
 	}
 	
+	public void spendGems(int gems) {
+		this.gems -= gems;
+	}
+	
+	public int getGems() {
+		return this.gems;
+	}
+	
     public int getHP() {
     	return this.HP;
     }
@@ -302,8 +310,4 @@ public class Character {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-    
-	
-    
-		
 }
