@@ -66,7 +66,7 @@ public class CharacterSelector {
     }
 
     // Create method to create character and prompt user to enter name
-    private static Character createCharacter(Scanner scanner, int choice, int difficultyChoice) {
+    public static Character createCharacter(Scanner scanner, int choice, int difficultyChoice) {
         System.out.print("\nEnter character name: ");
         String name = scanner.nextLine().trim();
         // Handle empty name
