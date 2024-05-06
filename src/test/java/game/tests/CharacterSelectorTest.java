@@ -69,7 +69,60 @@ public class CharacterSelectorTest {
         assertEquals(2, CharacterSelector.getValidChoice(scanner));
         System.setIn(System.in); // Reset System.in to its original state
     }
-    
+
+    @Test
+    public void testCreateCharacter() {
+        //Prepare input for Scanner (simulate user input)
+        String input = "Test Character\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        //Initialize Scanner
+        Scanner scanner = new Scanner(System.in);
+
+        //Call createCharacter method for Fighter
+        Character fighterCharacter = CharacterSelector.createCharacter(scanner, 1, 2);
+        //Assert properties for Fighter + adjust stats based on class
+        fighterCharacter.setStrength(10 + 2);
+        fighterCharacter.setConstitution(10 + 1);
+        fighterCharacter.setWisdom(10 - 2);
+        assertEquals("Fighter", fighterCharacter.getCharacterClass());
+        assertEquals(12, fighterCharacter.getStrength());
+        assertEquals(11, fighterCharacter.getConstitution());
+        assertEquals(8, fighterCharacter.getWisdom());
+        assertEquals(20, fighterCharacter.getHP());
+        assertEquals("Test Character", fighterCharacter.getName());
+
+        //Call createCharacter method for Wizard
+        Character wizardCharacter = CharacterSelector.createCharacter(scanner, 2, 2);
+        //Assert properties for Wizard + adjust stats based on class
+        wizardCharacter.setStrength(10 - 2);
+        wizardCharacter.setWisdom(10 + 1);
+        wizardCharacter.setIntelligence(10 + 2);
+        assertEquals("Wizard", wizardCharacter.getCharacterClass());
+        assertEquals(8, wizardCharacter.getStrength());
+        assertEquals(12, wizardCharacter.getIntelligence());
+        assertEquals(11, wizardCharacter.getWisdom());
+        assertEquals(20, wizardCharacter.getHP());
+        assertEquals("Test Character", wizardCharacter.getName());
+
+        //Call createCharacter method for Rogue
+        Character rogueCharacter = CharacterSelector.createCharacter(scanner, 3, 2);
+        //Assert properties for Rogue + adjust stats based on class
+        rogueCharacter.setDexterity(10 + 2);
+        rogueCharacter.setConstitution(10 - 2);
+        rogueCharacter.setCharisma(10 + 1);
+        assertEquals("Rogue", rogueCharacter.getCharacterClass());
+        assertEquals(12, rogueCharacter.getDexterity());
+        assertEquals(11, rogueCharacter.getCharisma());
+        assertEquals(8, rogueCharacter.getConstitution());
+        assertEquals(20, rogueCharacter.getHP());
+        assertEquals("Test Character", rogueCharacter.getName());
+
+        //Close scanner
+        scanner.close();
+    }
+	
     //Test displayCharacterInfo method
 	@Test
     public void testDisplayCharacterInfo() {
