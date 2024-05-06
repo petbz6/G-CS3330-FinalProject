@@ -20,6 +20,7 @@ public class CharacterMenuTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
+    Character character = new Character("Test Character", 1);
 
     @Before
     public void setUpStreams() {
@@ -32,14 +33,13 @@ public class CharacterMenuTest {
         System.setOut(originalOut);
 
     }
-
+    
+    // Test that the quit menu option exits the program
     @Test
     public void testQuitMenu() {
         String input = "4\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-
-        Character character = new Character("Test", 1);
         Scanner scanner = new Scanner(System.in);
 
         CharacterMenu.displayCharacterMenu(scanner, character);
@@ -48,14 +48,12 @@ public class CharacterMenuTest {
     }
 
     
-
+    // test that proper handling for invalid input is added
     @Test
     public void testInvalidOption() {
         String input = "5\n4\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-
-        Character character = new Character("Test", 1);
         Scanner scanner = new Scanner(System.in);
 
         CharacterMenu.displayCharacterMenu(scanner, character);

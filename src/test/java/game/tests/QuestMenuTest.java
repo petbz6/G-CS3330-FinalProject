@@ -16,11 +16,13 @@ import org.junit.Test;
 import game.Character;
 import game.Quest;
 import game.QuestMenu;
+import game.items.ShortSword;
 
 public class QuestMenuTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private final InputStream originalIn = System.in;
+    Character character = new Character("Test Character", 1);
     
     @Before
     public void setUpStreams() {
@@ -57,14 +59,31 @@ public class QuestMenuTest {
         String input = "7";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Scanner scanner = new Scanner(System.in);
-
-        Character character = new Character("Test", 1);
-        QuestMenu.displayQuests(scanner, character);
+        QuestMenu.displayQuests(scanner, character); 
 
         assertTrue(outContent.toString().contains("Available Quests:"));
         assertTrue(outContent.toString().contains("6. View Quest Status"));
         assertTrue(outContent.toString().contains("7. Back to Character Menu"));
     }
 
+    // Test for handling item quest reward
+    @Test
+    public void testHandleQuestItemRewards() {
+        Quest quest = new Quest("Test Quest", List.of("Test Reward"), 50, 50);
+        QuestMenu.handleQuestRewards(new Scanner(System.in), quest, 1, character);
+        String selectedReward = quest.getSelectedReward();
+
+        assertEquals("Test Reward", selectedReward);
+    }
     
+    // Test that quest menu option 7 returns to character menu
+    @Test
+    public void testReturnToCharacterMenu() {
+        String input = "7";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+        QuestMenu.displayQuests(scanner, character);
+        
+        assertTrue(outContent.toString().contains("Character Menu"));
+    }
 }

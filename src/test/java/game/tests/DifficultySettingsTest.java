@@ -16,16 +16,16 @@ import game.DifficultySettings;
 
 public class DifficultySettingsTest {
 
-    private static final ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-    private static final ByteArrayInputStream inMedium = new ByteArrayInputStream("2".getBytes());
-    private static final ByteArrayInputStream inHard = new ByteArrayInputStream("3".getBytes());
-    private static final Scanner scanner = new Scanner(in);
-    private static final Scanner scannerMedium = new Scanner(inMedium);
-    private static final Scanner scannerHard = new Scanner(inHard);
+    private static final ByteArrayInputStream Normal = new ByteArrayInputStream("1".getBytes());
+    private static final ByteArrayInputStream Medium = new ByteArrayInputStream("2".getBytes());
+    private static final ByteArrayInputStream Hard = new ByteArrayInputStream("3".getBytes());
+    private static final Scanner scanner = new Scanner(Normal);
+    private static final Scanner scannerMedium = new Scanner(Medium);
+    private static final Scanner scannerHard = new Scanner(Hard);
 
     @BeforeAll
     static void setUpBeforeAll() {
-        System.setIn(in);
+        System.setIn(Normal);
     }
     
     // Tests normal difficulty selection

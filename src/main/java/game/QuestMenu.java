@@ -185,6 +185,7 @@ public class QuestMenu {
         character.addGems(gemsReward);
 
         String questName = selectedQuest.getQuestName();
+        selectedQuest.setSelectedReward(selectedReward);
         AbstractQuestItemReward questReward;
 
         switch (questName) {
