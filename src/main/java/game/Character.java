@@ -230,13 +230,13 @@ public class Character {
     
     public void printInventory() {
         if (weapon != null) {
-            System.out.println("\nWeapon: " + weapon.printType());
+            System.out.println("\nWeapon: " + weapon.printType() + " Rarity: " + weapon.getRarity().toString());
         }
         if (protection != null) {
-            System.out.println("Protection: " + protection.printType());
+            System.out.println("Protection: " + protection.printType() + " Rarity: " + protection.getRarity().toString());
         }
         if (unique != null) {
-            System.out.println("Unique: " + unique.printType());
+            System.out.println("Unique: " + unique.printType() + " Rarity: " + unique.getRarity().toString());
         }
         if (weapon == null && protection == null && unique == null) {
             System.out.println("\nInventory Empty");
