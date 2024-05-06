@@ -20,7 +20,7 @@ public class QuestStatus {
 
             System.out.println("Quest Name: " + quest.getQuestName());
 
-            System.out.println("Status: " + questStatus);
+            System.out.println("Status: " + questStatus); 
             if (quest.isCompleted()) {
                 System.out.println("Outcome: " + questOutcome);
                 System.out.println(rewardChoice);

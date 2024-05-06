@@ -294,5 +294,16 @@ public class Character {
     public void setFistDamage(int fistDamage) {
     	this.fistDamage = fistDamage;
     }
+
+	public void setDifficultyChoice(int difficultyChoice) {
+		this.difficultyChoice = difficultyChoice;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+    
+	
+    
 		
 }

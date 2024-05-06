@@ -32,7 +32,7 @@ public class CharacterSelector {
 
         // Close the scanner
         scanner.close();
-
+ 
         // Venture forth
         // xxxxx
     }
@@ -47,7 +47,7 @@ public class CharacterSelector {
     }
 
     // Create a method to read user input and handle exceptions
-    static int getValidChoice(Scanner scanner) {
+    public static int getValidChoice(Scanner scanner) {
         int choice = 0;
         while (true) {
             try {
@@ -96,7 +96,7 @@ public class CharacterSelector {
                 break;
             case 3:
                 playerCharacter = new Character(name, difficultyChoice);
-                playerCharacter.characterClass = "Rogue";
+                playerCharacter.characterClass = "Rogue"; 
                 playerCharacter.dexterity += 2;
                 playerCharacter.charisma += 1;
                 playerCharacter.constitution -= 2;

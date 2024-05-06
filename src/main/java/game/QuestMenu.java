@@ -8,10 +8,10 @@ import game.questItemRewards.*;
 public class QuestMenu {
 
     // Stores the quest list as a class variable
-    static List<Quest> quests = questLog();
+    public static List<Quest> quests = questLog();
 
     // List of available quests, each with their own rewards and experience points
-    private static List<Quest> questLog() {
+    public static List<Quest> questLog() {
         List<Quest> quests = new ArrayList<>();
         quests.add(new Quest("Defeat the Bandits", List.of("Short Sword", "Battle Axe", "Warhammer"), 50, 50));
         quests.add(new Quest("Defend the Village", List.of("Broad Shield", "Helm of Justice", "Gloves of Salvation"), 60, 100));
@@ -21,7 +21,7 @@ public class QuestMenu {
 
         return quests;
     }
-
+ 
     public static void displayQuests(Scanner scanner, Character character) {
         // Get the list of quests from the class variable
         List<Quest> quests = QuestMenu.quests;
@@ -42,10 +42,9 @@ public class QuestMenu {
             System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest questStatus, or 7 to return to the character menu): ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
-                scanner.next();
+                scanner.nextLine();
             }
             questChoice = scanner.nextInt();
-
             scanner.nextLine();
             if (questChoice < 1 || questChoice > quests.size() + 2) {
                 System.out.println("Invalid quest choice. Please enter a number between 1 and " + (quests.size() + 2) + ".");
@@ -198,7 +197,7 @@ public class QuestMenu {
             case "Slay the Dragon":
                 questReward = new Quest5ItemReward();
                 break;
-            default:
+            default: 
                 System.out.println("Invalid quest choice.");
                 return;
         }
@@ -212,7 +211,7 @@ public class QuestMenu {
 	
 	// Quest Progression
 	// Player must complete quests in order. If the previous quest is not completed, the next one is set to locked
-	private static void questProgression(int index, Quest quest, List<Quest> quests) {
+	public static void questProgression(int index, Quest quest, List<Quest> quests) {
 	    if (quest.isCompleted() || index == 0 || quests.get(index - 1).isCompleted()) {
 	        System.out.println((index + 1) + ". " + quest.getQuestName());
 	    } else {
