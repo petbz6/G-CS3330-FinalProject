@@ -196,8 +196,9 @@ public class QuestMethods {
             }
         } while (option < 1 || option > 3);
 
+	    
+	    // You take a rest day.
 	    int option2 = -1;
-
 	    if (option == 1) {
 	        int complete = 0;
 	        do {
@@ -226,13 +227,13 @@ public class QuestMethods {
 
 	            if (option2 == 1) {
 	                if (character.getGems() < 100) {
-	                    System.out.println(character.getName() + " doesn't have enough gems to pay for the expensive hotel");
+	                    System.out.println("\n" + character.getName() + " doesn't have enough gems to pay for the expensive hotel");
 	                } else {
 	                    character.spendGems(100);
-	                    System.out.println("You decide to take a rest day at the expensive hotel. You feel extremely rested.");
+	                    System.out.println("\nYou decide to take a rest day at the expensive hotel. You feel extremely rested.");
 	                    complete = 1;
 	                }
-	                System.out.print("After your super relaxed night of rest you wake up to a village of panic! \n"
+	                System.out.print("\nAfter your super relaxed night of rest you wake up to a village of panic! \n"
 	                		+ "Someone informs you that the king is getting captured by the bandits you beat up durring the first quest!\n"
 	                		+ "Their stronger and more powerful now! "
 	                		+ "With more powerful weapons!!\n"
@@ -242,13 +243,13 @@ public class QuestMethods {
 
 	            if (option2 == 2) {
 	                if (character.getGems() < 50) {
-	                    System.out.println(character.getName() + " doesn't have enough gems to pay for the normal hotel");
+	                    System.out.println("\n" + character.getName() + " doesn't have enough gems to pay for the normal hotel");
 	                } else {
 	                    character.spendGems(50);
-	                    System.out.println("You decide to take a rest day at the normal hotel. You feel extremely rested.");
+	                    System.out.println("\nYou decide to take a rest day at the normal hotel. You feel extremely rested.");
 	                    complete = 1;
 	                }
-	                System.out.print("After your relaxed night of rest you wake up to a village of panic! \n"
+	                System.out.print("\nAfter your relaxed night of rest you wake up to a village of panic! \n"
 	                		+ "Someone informs you that the king is getting captured by the bandits you beat up durring the first quest!\n"
 	                		+ "Their stronger and more powerful now! "
 	                		+ "With more powerful weapons!!\n"
@@ -258,13 +259,13 @@ public class QuestMethods {
 
 	            if (option2 == 3) {
 	                if (character.getGems() < 25) {
-	                    System.out.println(character.getName() + " doesn't have enough gems to pay for the cheap hotel");
+	                    System.out.println("\n" + character.getName() + " doesn't have enough gems to pay for the cheap hotel");
 	                } else {
 	                    character.spendGems(25);
-	                    System.out.println("You decide to take a rest day at the cheap hotel. You feel extremely rested.");
+	                    System.out.println("\nYou decide to take a rest day at the cheap hotel. You feel extremely rested.");
 	                    complete = 1;
 	                }
-	                System.out.print("After your night of rest you wake up to a village of panic! \n"
+	                System.out.print("\nAfter your night of rest you wake up to a village of panic! \n"
 	                		+ "Someone informs you that the king is getting captured by the bandits you beat up durring the first quest!\n"
 	                		+ "Their stronger and more powerful now! "
 	                		+ "With more powerful weapons!!\n"
@@ -275,7 +276,7 @@ public class QuestMethods {
 	            if (option2 == 4) {
 	                System.out.println("You really don't need a rest day.");
 	                complete = 1;
-	                System.out.print("You find a village of panic! \n"
+	                System.out.print("\nYou find a village of panic! \n"
 	                		+ "Someone informs you that the king is getting captured by the bandits you beat up durring the first quest!\n"
 	                		+ "Their stronger and more powerful now! "
 	                		+ "With more powerful weapons!!\n"
@@ -284,7 +285,8 @@ public class QuestMethods {
 	            }
 	        } while (complete != 1);
 	    }
-
+	    
+	    // You buy coffee
 	    if (option == 2) {
 	        int complete = 0;
 	        do {
@@ -321,7 +323,7 @@ public class QuestMethods {
 	                    System.out.println("You decide to buy coffee from the expensive coffee shop. You feel refreshed.");
 	                    complete = 1;
 	                }
-	                System.out.print("After your full cup of coffee you look up to a village of panic!\n"
+	                System.out.print("\nAfter your full cup of coffee you look up to a village of panic!\n"
 	                		+ "Someone informs you that the king is getting captured by the bandits you beat up durring the first quest!\n"
 	                		+ "Their stronger and more powerful now! "
 	                		+ "With more powerful weapons!!\n"
@@ -337,7 +339,7 @@ public class QuestMethods {
 	                    System.out.println("You decide to buy coffee from the normal coffee shop. You feel refreshed.");
 	                    complete = 1;
 	                }
-	                System.out.print("After your cup of coffee you look up to a village of panic!\n"
+	                System.out.print("\nAfter your cup of coffee you look up to a village of panic!\n"
 	                		+ "Someone informs you that the king is getting captured by the bandits you beat up durring the first quest!\n"
 	                		+ "Their stronger and more powerful now! "
 	                		+ "With more powerful weapons!!\n"
@@ -353,7 +355,7 @@ public class QuestMethods {
 	                    System.out.println("You decide to buy coffee from the cheap coffee shop. You feel sorta refreshed.");
 	                    complete = 1;
 	                }
-	                System.out.print("After your horrible coffee you look up to a village of panic!\n"
+	                System.out.print("\nAfter your horrible coffee you look up to a village of panic!\n"
 	                		+ "Someone informs you that the king is getting captured by the bandits you beat up durring the first quest!\n"
 	                		+ "Their stronger and more powerful now! "
 	                		+ "With more powerful weapons!!\n"
@@ -363,7 +365,7 @@ public class QuestMethods {
 
 	        } while (complete != 1);
 	    }
-
+	    // You retire
 	    if (option == 3) {
 	        System.out.print("You decide to retire. This leaves you with little to no money to live off for the rest of your life.\n"
 	                + "You only live to 53 because you didn't save enough gems to support your luxurious lifestyle.\n"
@@ -371,9 +373,9 @@ public class QuestMethods {
 	        return 0;
 	    }
 	    
+	    // Knock out all the bandits
 	    int option3 = -1;
 	    System.out.println("");
-	    int hasHorse = 0;
 	    if(character.getDexterity() < 10) {
             do {
             	System.out.print("You have a hard time catching up!\n"
@@ -397,7 +399,6 @@ public class QuestMethods {
 	    	if(option3 == 1) {
 	    		System.out.println("\nYou stole the horse!!!\n"
 	    				+ "After several minutes of chasing the bandits you catch up!");
-	    		hasHorse = 1;
 	    	}
 	    	if(option3 == 2) {
 	    		System.out.println("You couldn't catch up and fail the quest! You might as well give up.");
@@ -481,6 +482,7 @@ public class QuestMethods {
     }
 
 	public int quest4(Scanner scanner, Character character) { // Defeat the Evil Knight
+		// Initial quest conditions
 	    System.out.println("On the way back from saving the king from the bandits, you come across an Evil Knight!\n"
 	            + "He has so much armor and the biggest sword you have ever seen!\n"
 	            + "In order to save you and the king's lives, you must kill this Evil Knight!");
@@ -491,12 +493,26 @@ public class QuestMethods {
 	    int characterProtection = character.getProtectionAmount(game.BadGuys.evilKnight);
 
 	    while (EvilKnightHealth > 0 && characterHealth > 0) {
-	        // Display options for the player
-	        System.out.println("Choose your action:");
-	        System.out.println("1. Attack");
-	        System.out.println("2. Defend");
-	        System.out.print("Select your option: ");
-	        int option = scanner.nextInt();
+	        int option = -1;
+		    do {
+		        // Display options for the player
+		    	System.out.println("Choose your action:\n"
+		    			+ "1. Attack\n"
+		    			+ "2. Defend\n"
+		    			+ "Select your option: ");
+
+	            // Validate user input
+	            while (!scanner.hasNextInt()) {
+	                System.out.println("Invalid input. Please enter a number.");
+	                scanner.next();
+	            }
+	            option = scanner.nextInt();
+	            
+	            scanner.nextLine();
+	            if (option < 1 || option > 2) {
+	                System.out.println("Invalid option. Please enter a number between 1 and 2");
+	            }
+	        } while (option < 1 || option > 2);
 
 	        switch (option) {
 	            case 1:
@@ -522,10 +538,10 @@ public class QuestMethods {
 
 	        // Check if player or Evil Knight is defeated
 	        if (characterHealth <= 0) {
-	            System.out.println("You have been defeated by the Evil Knight. The king's fate remains uncertain.");
+	            System.out.println("\nYou have been defeated by the Evil Knight. The king's fate remains uncertain.");
 	            return 0; // Failure
 	        } else if (EvilKnightHealth <= 0) {
-	            System.out.println("You have defeated the Evil Knight! The king is safe.");
+	            System.out.println("\nYou have defeated the Evil Knight! The king is safe.");
 	            return 1; // Success
 	        }
 
@@ -557,19 +573,32 @@ public class QuestMethods {
 	    boolean outsmartDragon = character.getIntelligence() >= 15;
 
 	    while (dragonHealth > 0 && characterHealth > 0) {
-	        // Display options for the player
-	        System.out.println("Choose your action:");
-	        System.out.println("1. Attack");
-	        System.out.println("2. Defend");
+	        int option = -1;
+		    do {
+		    	// Display options for the player
+		    	System.out.println("Choose your action:\n"
+		    			+ "1. Attack\n"
+		    			+ "2. Defend");
+		        // If the player can outsmart the dragon, provide an additional option
+		        if (outsmartDragon) {
+		            System.out.println("3. Use your intelligence to outsmart the dragon");
+		        }
+		        System.out.print("Select your option: ");
 
-	        // If the player can outsmart the dragon, provide an additional option
-	        if (outsmartDragon) {
-	            System.out.println("3. Use your intelligence to outsmart the dragon");
-	        }
-
-	        System.out.print("Select your option: ");
-	        int option = scanner.nextInt();
-
+	            // Validate user input
+	            while (!scanner.hasNextInt()) {
+	                System.out.println("Invalid input. Please enter a number.");
+	                scanner.next();
+	            }
+	            option = scanner.nextInt();
+	            
+	            scanner.nextLine();
+	            System.out.println("");
+	            if (option < 1 || option > 3) {
+	                System.out.println("Invalid option. Please enter a number between 1 and 3");
+	            }
+	        } while (option < 1 || option > 3);
+	        
 	        switch (option) {
 	            case 1:
 	                // Player chooses to attack
