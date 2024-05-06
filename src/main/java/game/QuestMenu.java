@@ -1,7 +1,8 @@
 package game;
 
-import java.util.ArrayList;   
+import java.util.ArrayList;    
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import game.questItemRewards.*;
 
@@ -42,10 +43,14 @@ public class QuestMenu {
             System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest questStatus, or 7 to return to the character menu): ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
-                scanner.nextLine();
+                scanner.nextLine(); 
             }
             questChoice = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                scanner.nextLine(); 
+            } catch (Exception e) { 
+                return; 
+            }
             if (questChoice < 1 || questChoice > quests.size() + 2) {
                 System.out.println("Invalid quest choice. Please enter a number between 1 and " + (quests.size() + 2) + ".");
             }
@@ -53,16 +58,16 @@ public class QuestMenu {
 
         if (questChoice == 6) {
             QuestStatus.viewQuestStatus(scanner, character);
-            return; 
+            return;
         } else if (questChoice == 7) {
-            CharacterMenu.displayCharacterMenu(scanner, character); 
+            CharacterMenu.displayCharacterMenu(scanner, character);
             return;
         }
 
         Quest selectedQuest = quests.get(questChoice - 1);
         if (selectedQuest.isCompleted()) {
             System.out.println("Already Completed!");
-            displayQuests(scanner, character);
+            displayQuests(scanner, character); 
             return;
         }
         switch (questChoice) {
@@ -73,7 +78,7 @@ public class QuestMenu {
                 } else {
                     System.out.println("You failed the first quest!");
                 }
-                return; 
+                return;
             case 2:
                 QuestMethods quest2 = new QuestMethods();
                 if (quest2.quest2(scanner, character) == 1) {
@@ -81,8 +86,7 @@ public class QuestMenu {
                 } else {
                     System.out.println("You failed the first quest!");
                 }
-                return; 
-            // Add cases for other quests
+                return;
             case 3:
                 QuestMethods quest3 = new QuestMethods();
                 if (quest3.quest3(scanner, character) == 1) {
@@ -90,7 +94,7 @@ public class QuestMenu {
                 } else {
                     System.out.println("You failed the first quest!");
                 }
-                return; 
+                return;
             case 4:
                 QuestMethods quest4 = new QuestMethods();
                 if (quest4.quest4(scanner, character) == 1) {
@@ -98,7 +102,7 @@ public class QuestMenu {
                 } else {
                     System.out.println("You failed the first quest!");
                 }
-                return; 
+                return;
             case 5:
                 QuestMethods quest5 = new QuestMethods();
                 if (quest5.quest5(scanner, character) == 1) {
@@ -106,11 +110,13 @@ public class QuestMenu {
                 } else {
                     System.out.println("You failed the first quest!");
                 }
-                return; 
+                return;
             default:
                 System.out.println("Invalid quest choice.");
         }
     }
+
+
 
     // After combat (if player successfully wins combat), they will have completed the quest
     // The player will be prompted to select from the available rewards

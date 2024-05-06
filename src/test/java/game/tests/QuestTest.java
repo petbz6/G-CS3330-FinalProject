@@ -68,5 +68,11 @@ public class QuestTest {
         quest.setCompleted(true);
         assertTrue(quest.isCompleted());
     }
+    
+    @Test
+    void testSelectedReward() {
+        quest.setSelectedReward("Test");
+        assertEquals("Test", quest.getSelectedReward());
+    }
 
 }

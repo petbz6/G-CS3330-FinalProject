@@ -19,8 +19,7 @@ public class QuestStatus {
             int gemsReward = quest.isCompleted() ? quest.getGemReward() : 0; 
 
             System.out.println("Quest Name: " + quest.getQuestName());
-
-            System.out.println("Status: " + questStatus); 
+            System.out.println("Status: " + questStatus);  
             if (quest.isCompleted()) {
                 System.out.println("Outcome: " + questOutcome);
                 System.out.println(rewardChoice);
@@ -35,7 +34,7 @@ public class QuestStatus {
     }
     
     // Displays a message detailing the outcome of the each quest
-	private static String questOutcomeMessage(String questName) {
+	public static String questOutcomeMessage(String questName) {
 	    switch (questName) {
 	        case "Defeat the Bandits":
 	            return "\nYou defeated the bandits. Although no one was present to witness your"
@@ -45,14 +44,19 @@ public class QuestStatus {
 	            		+ "\nAll of the citizens gathered to sing praises of your bravery and"
 	            		+ "\nthe mayor himself rewarded you for your efforts.";
 	        case "Save the King":
-	        	return "(INSERT)";
+	        	return "\nAfter saving the life of the King, you became a hero to the kingdom, "
+	        			+ "\nbut you had no time to rest, for evil still prowls the lands. "
+	        			+ "\nYou must continue your journey and prove yourself worthy of the title of hero.";
 	        case "Defeat the Evil Knight":
-	        	return "(INSERT)";
+	        	return "\nThe duel with the Evil Knight shook your resolve, yet you stand triumphant! "
+	        			+ "\nWhat possessed the Knight to turn to darkness eludes you, but deep down "
+	        			+ "\nyou know the same could happen to you if your not careful.";
 	        case "Slay the Dragon":
-	        	return "INSERT";
+	        	return "\nWith the slaying of the great dragon, you have solidified your place in "
+	        			+ "\nthe history books. Such a victory will be told of for ages. The king, fortunate "
+	        			+ "\nfor the return of his treasure rewards you with land and enough gold and gems to last forever."; 
 	        default:
 	            return "";
 	    }
 	}
-
 }

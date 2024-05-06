@@ -66,6 +66,7 @@ public class Quest {
 	public void setSelectedReward(String selectedReward) {
 		this.selectedReward = selectedReward;
 	}
+	
 
 	public int getGemReward() {
 		return gemReward;
@@ -74,9 +75,7 @@ public class Quest {
 	public void setGemReward(int gemReward) {
 		this.gemReward = gemReward;
 	}
-	
-	
-    
+	 
     
 	
 }
