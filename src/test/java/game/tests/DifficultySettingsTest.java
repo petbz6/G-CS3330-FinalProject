@@ -57,7 +57,7 @@ public class DifficultySettingsTest {
         character.setWisdom(10);
         character.setCharisma(10);
 
-        DifficultySettings.adjustStats(character, 1);
+        DifficultySettings.adjustDifficultyStats(character, 1);
 
         assertEquals(10, character.getStrength(), "Strength unchanged in Normal difficulty");
         assertEquals(10, character.getDexterity(), "Dexterity unchanged in Normal difficulty");
@@ -78,7 +78,7 @@ public class DifficultySettingsTest {
         character.setWisdom(10);
         character.setCharisma(10);
 
-        DifficultySettings.adjustStats(character, 2);
+        DifficultySettings.adjustDifficultyStats(character, 2);
 
         assertEquals(8, character.getStrength(), "Strength decreased by 2 in Medium difficulty");
         assertEquals(8, character.getDexterity(), "Dexterity decreased by 2 in Medium difficulty");
@@ -99,7 +99,7 @@ public class DifficultySettingsTest {
         character.setWisdom(10);
         character.setCharisma(10);
 
-        DifficultySettings.adjustStats(character, 3);
+        DifficultySettings.adjustDifficultyStats(character, 3);
 
         assertEquals(6, character.getStrength(), "Strength decreased by 4 in Hard difficulty");
         assertEquals(6, character.getDexterity(), "Dexterity decreased by 4 in Hard difficulty");

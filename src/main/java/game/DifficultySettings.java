@@ -14,7 +14,7 @@ public class DifficultySettings {
         return CharacterSelector.getValidChoice(scanner);
     }
     
-    public static void adjustStats(Character character, int difficultyChoice) {
+    public static void adjustDifficultyStats(Character character, int difficultyChoice) {
         int statAdjustment = 0;
         switch (difficultyChoice) {
             case 1:

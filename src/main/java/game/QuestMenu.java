@@ -22,15 +22,16 @@ public class QuestMenu {
 
         return quests;
     }
- 
+    
+    // Displays the quests each assigned a number
+    // Also displays the option to view quest status and return to character Menu
     public static void displayQuests(Scanner scanner, Character character) {
-        // Get the list of quests from the class variable
+
         List<Quest> quests = QuestMenu.quests;
 
         System.out.println("\nAvailable Quests:");
         for (int i = 0; i < quests.size(); i++) {
-            Quest quest = quests.get(i);
-            questProgression(i, quest, quests);
+            questProgression(i, quests.get(i), quests);
         }
 
         // Option 6: View Quest Status
@@ -40,7 +41,7 @@ public class QuestMenu {
 
         int questChoice;
         do {
-            System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest questStatus, or 7 to return to the character menu): ");
+            System.out.print("\nEnter the number of the quest you would like to choose (or 6 to view quest status, or 7 to return to the character menu): ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.nextLine(); 
@@ -64,19 +65,29 @@ public class QuestMenu {
             return;
         }
 
+        // Handles when the selected quest is locked
         Quest selectedQuest = quests.get(questChoice - 1);
+        if (!selectedQuest.isCompleted() && (questChoice - 1) > 0 && !quests.get(questChoice - 2).isCompleted()) {
+            System.out.println("Quest locked. You must complete the previous quest.");
+            displayQuests(scanner, character);
+            return;
+        }
+
+        // Handle the case where the selected quest is already completed
         if (selectedQuest.isCompleted()) {
             System.out.println("Already Completed!");
             displayQuests(scanner, character); 
             return;
         }
+
+        // If the quest is not locked or completed, proceed with quest selection
         switch (questChoice) {
             case 1:
                 QuestMethods quest1 = new QuestMethods();
                 if (quest1.quest1(scanner, character) == 1) {
                     questCompletedMenu(scanner, selectedQuest, character, questChoice);
                 } else {
-                    System.out.println("You failed the first quest!");
+                    System.out.println("Quest Failed!");
                 }
                 return;
             case 2:
@@ -115,6 +126,7 @@ public class QuestMenu {
                 System.out.println("Invalid quest choice.");
         }
     }
+
 
 
 

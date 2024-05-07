@@ -103,7 +103,7 @@ public class CharacterSelector {
                 playerCharacter.setHP(20);
                 break;
         }
-        DifficultySettings.adjustStats(playerCharacter, difficultyChoice);
+        DifficultySettings.adjustDifficultyStats(playerCharacter, difficultyChoice);
         
         return playerCharacter;
     }
