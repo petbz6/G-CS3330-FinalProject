@@ -20,10 +20,10 @@ This project consists of a Dungeon & Dragons game that allows the user to go on 
 The character system starts with the Create a Character option in the main menu. The user must then choose from three classes: Fighter, Wizard and Rogue. Each class has their own strengths and weaknesses, with their stats being adjusted accordingly. For instance, the Fighter class adds two to the strength and constitution stats, but subtracts two from the wisdom stat. The user will then be prompted to select a difficulty level from the options Normal (stats are unchanged), Medium (all stats decreased by 2) and Hard (all stats decreased by 4). And finally, the user will give their character a name. The character's stats will then be generated through a roll feature which simulates the rolling of a six-sided die (The class specific and difficulty level stat adjustments are added/subtracted from this initial roll). Then in the character menu, the Character option will display information pertaining to character, and update accordingly as the user progresses through the game. 
 
 ### Inventory
-The inventory system allows for the user to gain unique armor and weapons from completing quests, along with a gem currency that enables the user to upgrade equipment. Each item has its own capabilities against enemies, so a shortsword and inferno staff will do different levels of damage and overall perform differently. Furthermore, using weapons in combat will wear down its health with each attack, and upon reaching 0 health, the weapon will deal no damage, requiring the user to repair the item. Furthermore, within the inventory option itself, the user is able to add or remove items from their inventory, favorite specific items, upgrade items using the gem currency and perform the repair function. 
+The inventory system allows for the user to gain unique armor and weapons from completing quests, along with a gem currency that enables the user to upgrade equipment. Each item has its own capabilities against enemies, so a shortsword and inferno staff will do different levels of damage and overall perform differently. Furthermore, using weapons in combat will wear down its health with each attack, and upon reaching 0 health, the weapon will deal no damage, requiring the user to repair the item. Within the inventory option itself, the user is able to add or remove items from their inventory, favorite specific items, upgrade items using the gem currency and perform the repair function. 
 
 ### Combat
-The combat system simulates turn-based combat between the player character and enemies. Combat occurs in quests, with each quest having its own unique scenario. For instance, the first quest consists of the character, armed only with their fists as they have not earned any rewards yet, fighting bandits. The player has the option to either fight and attempt to win and complete the quest, or run away and fail the quest. 
+The combat system simulates turn-based combat between the player character and enemies. Combat occurs in quests, with each quest having its own unique scenario. For instance, the first quest consists of the character, armed only with their fists as they have not earned any rewards yet, fighting bandits. The player has the option to either fight and attempt to win and complete the quest, or run away and fail the quest. Furthermore, an element of randomness is added for some quests, where the players damage is not set, but rather dealt based on a determined range. Special abilities can also be found in some quests, where if the player character is powerful enough and meets a stat requirement, they can choose to use an ability to gain an edge over their opponent.
 
 ### Quests
 The quest system allows for the user to go on unique adventures, filled with action, danger and rewards. Quests can be acessed by choosing the Quest option in the character menu. In order to instill progression, quests are locked until the player completes the previous ones, i.e. quest 2 cannot be completed until quest 1 is completed. After selecting a quest, combat will ensue, and the player will have to make choices in order to win and complete the quest. Once a quest is successfully completed, the player will be granted rewards, including experience points which contribute to increasing the players level, gems which allow the player to upgrade items in their inventory, and a choice from three equipment rewards, which upon selection is added to inventory. Furthermore, a View Quest Status option is available in the quest menu, which will display information related to each quest, including how much experience gained, how many gems gained, the equipment reward selected and a brief statement describing the outcome of completing the quest. 
@@ -47,14 +47,14 @@ Andrew (Character System):
 Isaac (Combat System):
 - Character Turn
 - Enemy Turn
-- 3
-- 4
-- 5
+- Random Damage Amount
+- Special Abilities (Based on Stats)
+- Quest Specific Combat Scenarios (All Quests have different combat involved)
 
 Kyle (Inventory System):
-- Manage Inventory (Add, Remove, Swap Items)
+- Manage Inventory 
 - Organize Inventory
-- Item Enhancement (gem upgrades)
+- Item Enhancement (gems)
 - Item Durability and Repairs
 - Item Stats and Quality
 
