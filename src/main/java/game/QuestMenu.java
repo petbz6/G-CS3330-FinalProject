@@ -84,7 +84,7 @@ public class QuestMenu {
                 if (quest2.quest2(scanner, character) == 1) {
                     questCompletedMenu(scanner, selectedQuest, character, questChoice);
                 } else {
-                    System.out.println("You failed the first quest!");
+                    System.out.println("Quest Failed!");
                 }
                 return;
             case 3:
@@ -92,7 +92,7 @@ public class QuestMenu {
                 if (quest3.quest3(scanner, character) == 1) {
                     questCompletedMenu(scanner, selectedQuest, character, questChoice);
                 } else {
-                    System.out.println("You failed the first quest!");
+                    System.out.println("Quest Failed!");
                 }
                 return;
             case 4:
@@ -100,7 +100,7 @@ public class QuestMenu {
                 if (quest4.quest4(scanner, character) == 1) {
                     questCompletedMenu(scanner, selectedQuest, character, questChoice);
                 } else {
-                    System.out.println("You failed the first quest!");
+                    System.out.println("Quest Failed!");
                 }
                 return;
             case 5:
@@ -108,7 +108,7 @@ public class QuestMenu {
                 if (quest5.quest5(scanner, character) == 1) {
                     questCompletedMenu(scanner, selectedQuest, character, questChoice);
                 } else {
-                    System.out.println("You failed the first quest!");
+                    System.out.println("Quest Failed!");
                 }
                 return;
             default:

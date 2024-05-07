@@ -157,6 +157,14 @@ public class Character {
         level++;
         experience -= getXPRequired();
         System.out.println("You leveled up to level " + level + "!");
+        
+     // Increase all stats by 1 when leveling up
+        strength++;
+        dexterity++;
+        constitution++;
+        intelligence++;
+        wisdom++;
+        charisma++;
     }
     
     // Calculates the experience points required for the next level

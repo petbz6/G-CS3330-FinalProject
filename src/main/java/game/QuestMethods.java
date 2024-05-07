@@ -488,7 +488,7 @@ public class QuestMethods {
 	            + "In order to save you and the king's lives, you must kill this Evil Knight!");
 
 	    int EvilKnightHealth = 100;
-	    character.setHP(60);
+	    character.setHP(75);
 	    int characterHealth = character.getHP();
 	    int characterProtection = character.getProtectionAmount(game.BadGuys.evilKnight);
 
